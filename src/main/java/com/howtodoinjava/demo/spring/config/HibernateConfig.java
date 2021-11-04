@@ -29,11 +29,11 @@ public class HibernateConfig {
 	public LocalSessionFactoryBean getSessionFactory() {
 		LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
 		factoryBean.setDataSource(getDataSource());
-		// factoryBean.setConfigLocation(context.getResource("classpath:hibernate.cfg.xml"));
+		//factoryBean.setConfigLocation(context.getResource("classpath:hibernate.cfg.xml"));
 		Properties properties = new Properties();
 		properties.put("hibernate.hbm2ddl.auto", "create");
 		properties.put("hibernate.show_sql", "true");
-		properties.put("hibernate.dialect", "org.hibernate.dialect.MySQL57Dialect");
+		properties.put("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
 		factoryBean.setHibernateProperties(properties);
 		factoryBean.setAnnotatedClasses(User.class);
 		return factoryBean;
@@ -50,9 +50,9 @@ public class HibernateConfig {
 	public DataSource getDataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/test01");
+		dataSource.setUrl("jdbc:mysql://localhost:3306/test");
 		dataSource.setUsername("root");
-		dataSource.setPassword("pass");
+		dataSource.setPassword("root");
 		return dataSource;
 	}
 
