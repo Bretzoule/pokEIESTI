@@ -1,4 +1,4 @@
-package com.howtodoinjava.demo.spring.dao;
+package spring.dao;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.howtodoinjava.demo.spring.model.User;
+import spring.model.User;
 
 @Repository
 public class UserDaoImp implements UserDao {

@@ -1,4 +1,4 @@
-package com.howtodoinjava.demo.spring.config;
+package spring.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 

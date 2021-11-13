@@ -1,4 +1,4 @@
-package com.howtodoinjava.demo.spring.config;
+package spring.config;
 
 import java.util.Properties;
 
@@ -15,7 +15,7 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.howtodoinjava.demo.spring.model.User;
+import spring.model.User;
 
 @Configuration
 @EnableTransactionManagement
