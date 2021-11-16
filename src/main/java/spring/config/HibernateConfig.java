@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import spring.model.User;
 import spring.model.Product;
+import spring.model.Order;
 
 @Configuration
 @EnableTransactionManagement
@@ -36,7 +37,7 @@ public class HibernateConfig {
 		properties.put("hibernate.show_sql", "true");
 		properties.put("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
 		factoryBean.setHibernateProperties(properties);
-		factoryBean.setAnnotatedClasses(User.class, Product.class);
+		factoryBean.setAnnotatedClasses(User.class, Product.class, Order.class);
 		return factoryBean;
 	}
 
