@@ -28,10 +28,10 @@ public class UserController {
     }
 
     @PostMapping("/add")
-    public String saveUser(@RequestParam("name") String name, @RequestParam("email") String email) {
+    public String saveUser(@RequestParam("pseudo") String pseudo, @RequestParam("password") String password) {
         User user = new User();
-        user.setEmail(email);
-        user.setName(name);
+        user.setPseudo(pseudo);
+        user.setPassword(password);
         userService.save(user);
 
         return "redirect:/users";

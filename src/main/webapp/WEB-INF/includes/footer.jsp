@@ -1,13 +1,13 @@
-<footer id="footerinner">
+
 	<div id="footerwrapper">
 		<div class="footer-left">
 			<h3>
-				Qu'est-ce que <span>Pok√âISTI</span> ?
+				Qu'est-ce que <span>Pok…ISTI</span> ?
 			</h3>
 			<p>
 				LOREM IPSUM SHESH LOREM IPSUM SHESHLOREM IPSUM SHESHLOREM IPSUM
 				SHESHLOREM IPSUM SHESHLOREM IPSUM SHESHLOREM IPSUM SHESHLOREM IPSUM
-				SHESHLOREM IPSUM SHESH <span class="clear">‚ù§Ô∏è</span> !
+				SHESHLOREM IPSUM SHESH <span class="clear">È</span> !
 			</p>
 			<p class="footer-icons">
 				<a href="mailto:contact@pokeisti.eu">&#x1F4E7;</a> | <a
@@ -27,9 +27,6 @@
 		</div>
 	</div>
 	<div class="copyright">
-		<img alt="footerlogo" src="/assets/footerlogo.png"> <br>
-		&copy; Pok√âISTI - Tous droits r√©serv√©s.
+		<a href="#"><img style="width:200px;margin-right:20px;" id="logoTopDroit" src="./assets/pokeisti.png" alt="logo"></a><br>
+		&copy; PokEISTI - Tous droits rÈservÈs.
 	</div>
-</footer>
-</body>
-</html>

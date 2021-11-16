@@ -1,0 +1,5 @@
+{
+	"HOST":"jdbc:mysql://localhost:3306/test",
+	"USERNAME" : "dodo",
+	"PASSWORS" : "enviedemourir"
+}

@@ -16,6 +16,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import spring.model.User;
+import spring.model.Product;
 
 @Configuration
 @EnableTransactionManagement
@@ -35,7 +36,7 @@ public class HibernateConfig {
 		properties.put("hibernate.show_sql", "true");
 		properties.put("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
 		factoryBean.setHibernateProperties(properties);
-		factoryBean.setAnnotatedClasses(User.class);
+		factoryBean.setAnnotatedClasses(User.class, Product.class);
 		return factoryBean;
 	}
 
@@ -50,9 +51,9 @@ public class HibernateConfig {
 	public DataSource getDataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/test");
-		dataSource.setUsername("root");
-		dataSource.setPassword("root");
+		dataSource.setUrl("jdbc:mysql://localhost:3306/pokeisti");
+		dataSource.setUsername("dodo");
+		dataSource.setPassword("enviedemourir");
 		return dataSource;
 	}
 

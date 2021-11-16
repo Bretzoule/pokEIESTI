@@ -7,45 +7,43 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
-
 @Entity
-@Table(name = "TBL_USERS")
+@Table(name = "users")
 public class User {
 
-   @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
-   @Column(name = "USER_ID")
-   private int id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "user_id")
+	private int id;
 
-   @Column(name = "USER_NAME")
+	@Column(name = "pseudo")
+	private String pseudo;
 
-   private String name;
+	@Column(name = "password")
+	private String password;
 
-   @Column(name = "USER_EMAIL", unique = true)
-   private String email;
+	public int getId() {
+		return id;
+	}
 
-   public int getId() {
-      return id;
-   }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-   public void setId(int id) {
-      this.id = id;
-   }
+	public String getPseudo() {
+		return pseudo;
+	}
 
-   public String getName() {
-      return name;
-   }
+	public void setPseudo(String pseudo) {
+		this.pseudo = pseudo;
+	}
 
-   public void setName(String name) {
-      this.name = name;
-   }
+	public String getPassword() {
+		return password;
+	}
 
-   public String getEmail() {
-      return email;
-   }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-   public void setEmail(String email) {
-      this.email = email;
-   }
 }
