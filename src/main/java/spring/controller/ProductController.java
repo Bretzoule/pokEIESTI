@@ -16,7 +16,7 @@ public class ProductController {
 	public String index() {
 		return ("products");
 	}
-	
+
 	@GetMapping("/products/addProduct")
 	public String addProduct() {
 		return "addProducts";
