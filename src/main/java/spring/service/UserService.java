@@ -5,9 +5,12 @@ import java.util.List;
 import spring.model.User;
 
 public interface UserService {
-   void save(User user);
+	void save(User user);
 
-   List<User> list();
-   
-   void delete(long id);
+	void delete(long id);
+
+	List<User> list();
+	
+	User getUser(long id);
+
 }
