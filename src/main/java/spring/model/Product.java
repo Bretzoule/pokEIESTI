@@ -30,6 +30,9 @@ public class Product {
 	@Column(name = "stock")
 	private int stock;
 
+	@Column(name = "picture")
+	private String picture;
+
 	@Enumerated(EnumType.STRING)
 	@Column(name = "type")
 	private Type type;
@@ -72,5 +75,13 @@ public class Product {
 
 	public void setType(Type type) {
 		this.type = type;
+	}
+	
+	public String getPicture() {
+		return picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
 	}
 }
