@@ -1,7 +1,5 @@
 package spring.controller;
 
-import java.sql.SQLException;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +42,7 @@ public class UserController {
 	
 	@PostMapping("/login")
 	public String loginUser(@RequestParam("pseudo") String pseudo, @RequestParam("password") String password) {
-		String mdp;
+		//String mdp;
 		String pw_hash =BCrypt.hashpw("test", BCrypt.gensalt());
 		
 		//verifier les trucs pour connecter
