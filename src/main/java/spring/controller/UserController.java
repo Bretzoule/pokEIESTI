@@ -36,6 +36,23 @@ public class UserController {
 		return "redirect:/users";
 
 	}
+	
+	@PostMapping("/login")
+	public String loginUser(@RequestParam("pseudo") String pseudo, @RequestParam("password") String password) {
+		//verifier les trucs pour connecter
+		// si c'est bon 
+		// regarder comment passer un paramètre a une page 
+		// et passer un paramètre "connectee"
+		
+		return "redirect:/home";
+		
+		// sinon, rediriger sur la page de connexion et 
+		// lever un drapeau erreur
+		
+		//return "redirect:/login";
+		
+
+	}
 
 	@GetMapping("/users")
 	public String getAllUsers(Model model) {

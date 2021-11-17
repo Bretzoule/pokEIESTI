@@ -7,12 +7,12 @@
 	<form name='new' action="/newuser" method='POST'>
 		<table>
 			<tr>
-				<td>UserName:</td>
-				<td><input type='text' name='name' value=''></td>
+				<td>Pseudo:</td>
+				<td><input type='text' name='pseudo' value=''></td>
 			</tr>
 			<tr>
-				<td>email:</td>
-				<td><input type='text' name='email' value=''></td>
+				<td>Password:</td>
+				<td><input type='text' name='password' value=''></td>
 			</tr>
 			<tr>
 				<td colspan='2'><input name="submit" type="submit"
