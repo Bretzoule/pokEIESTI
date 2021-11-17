@@ -16,16 +16,16 @@
 			<thead>
 				<tr>
 					<th>#ID</th>
-					<th>Name</th>
-					<th>Email</th>
+					<th>Pseudo</th>
+					<th>Password</th>
 				</tr>
 			</thead>
 
 			<c:forEach var="user" items="${usersModel}">
 				<tr>
 					<td>${user.id}</td>
-					<td>${user.name}</td>
-					<td>${user.email}</td>
+					<td>${user.pseudo}</td>
+					<td>${user.password}</td>
 			
 				</tr>
 			</c:forEach>
