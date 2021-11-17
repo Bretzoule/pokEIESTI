@@ -21,9 +21,9 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@GetMapping("/createUser")
-	public String createUser() {
-		return "home";
+	@GetMapping("/login")
+	public String reachLoginPage() {
+		return "login";
 	}
 
 	@PostMapping("/add")
