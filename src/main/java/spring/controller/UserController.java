@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import spring.model.User;
+import spring.dao.*;
 import spring.service.UserService;
 
 @Controller
@@ -42,9 +43,9 @@ public class UserController {
 	
 	@PostMapping("/login")
 	public String loginUser(@RequestParam("email") String email, @RequestParam("password") String password) {
-		//String mdp;
-		String pw_hash =BCrypt.hashpw("test", BCrypt.gensalt());
-		
+		User user = new User();
+		user = userService.getUser(email);
+		String pw_hash = user.getPassword();
 		//verifier les trucs pour connecter
 		// si c'est bon 
 		// regarder comment passer un paramètre a une page 
