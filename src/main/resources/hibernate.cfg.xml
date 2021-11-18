@@ -15,7 +15,7 @@
 			name="hibernate.c3p0.max_statements">150</property> -->
 
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/pokeisti</property>
+		<property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:3306/pokeisti</property>
 		<property name="hibernate.connection.username">debian-sys-maint</property>
         <property name="hibernate.connection.password">MeIGmqIV8iynkp88</property>
 		<property name="hibernate.hbm2ddl.auto">create</property>

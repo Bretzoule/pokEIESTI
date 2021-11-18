@@ -30,15 +30,15 @@ public class UserDaoImp implements UserDao {
 	}
 
 	@Override
-	public User getUser(long id) {
-		return ((User) sessionFactory.getCurrentSession().createQuery("from User where id = :id").setParameter("id", id)
+	public User getUser(String email) {
+		return ((User) sessionFactory.getCurrentSession().createQuery("from User where email = :email").setParameter("email", email)
 				.uniqueResult());
 	}
 
 	@Override
-	public void delete(long id) {
+	public void delete(String email) {
 		Session session = sessionFactory.getCurrentSession();
-		User userTodelete = session.get(User.class, id);
+		User userTodelete = session.get(User.class, email);
 		session.delete(userTodelete);
 
 	}
