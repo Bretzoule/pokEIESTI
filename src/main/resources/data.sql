@@ -1,11 +1,8 @@
---
--- Déchargement des données de la table `categories`
---
 USE pokeisti;
 -- --------------------------------------------------------
 -- Déchargement des données de la table `produits`
 --
-INSERT INTO `produits` (
+INSERT INTO `products` (
         `product_id`,
         `name`,
         `picture`,
@@ -108,7 +105,7 @@ VALUES (
         29.99,
         5,
         'FIGURINE',
-    ),
+    );
     -- --------------------------------------------------------
     -- Déchargement des données de la table `users`
     --
