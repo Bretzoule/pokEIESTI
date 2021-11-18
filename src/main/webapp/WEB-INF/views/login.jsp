@@ -23,13 +23,13 @@
 						<!-- Pseudo : <input type="text" name="pseudo"/> <br><br>   
 						Password : <input type="text" name="password"/> <br><br>   
 						<button name="submit" type="submit">Se connecter</button> -->
-						
+						 
 						<div class="form-floating m-2">
-					    	<input type="text" class="form-control" id="floatingInput" placeholder="nom@exemple.com" name="signin_mail">
+					    	<input type="text" class="form-control" id="email" placeholder="nom@exemple.com" name="email">
 					    	<label for="floatingInput">Adresse mail</label>
 			        	</div>
 			        	<div class="form-floating m-2">
-					    	<input type="password" class="form-control" id="floatingPassword" placeholder="Mot de passe" name="signin_mdp">
+					    	<input type="password" class="form-control" id="password" placeholder="Mot de passe" name="password">
 					    	<label for="floatingPassword">Mot de passe</label>
 			        	</div>
 						<div class="px-2">

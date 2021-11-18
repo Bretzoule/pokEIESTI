@@ -5,12 +5,12 @@ import java.util.List;
 import javax.persistence.TypedQuery;
 
 import spring.model.Order;
+import spring.model.User;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 
 @Repository
 public class OrderDaoImp implements OrderDao{
