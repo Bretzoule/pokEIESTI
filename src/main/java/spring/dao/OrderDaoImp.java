@@ -25,7 +25,7 @@ public class OrderDaoImp implements OrderDao{
 
 	@Override
 	public Order getOrder(long order_id) {
-		return ((Order) sessionFactory.getCurrentSession().createQuery("from orders where order_id = :id")
+		return ((Order) sessionFactory.getCurrentSession().createQuery("from Order where order_id = :id")
 				.setParameter("id", order_id).uniqueResult());
 	}
 
@@ -44,7 +44,7 @@ public class OrderDaoImp implements OrderDao{
 	@Override
 	public List<Order> getAllOrders() {
 		@SuppressWarnings("unchecked")
-		TypedQuery<Order> query = sessionFactory.getCurrentSession().createQuery("from orders");
+		TypedQuery<Order> query = sessionFactory.getCurrentSession().createQuery("from Order");
 		return query.getResultList();
 	}
 
