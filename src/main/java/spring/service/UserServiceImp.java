@@ -39,6 +39,7 @@ public class UserServiceImp implements UserService {
 
 	@Override
 	public User getUser(String email) {
-		return userDao.getUser(email);
+		List<User> data = userDao.getUser(email);
+		return (data  != null && !data.isEmpty()) ? data.get(0) : null;
 	}
 }

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import spring.model.User;
-import spring.dao.*;
 import spring.service.UserService;
 
 @Controller
@@ -28,17 +27,24 @@ public class UserController {
 		return "login";
 	}
 
+	public boolean existUser(String email) {
+		return(userService.getUser(email)!=null);
+	}
+	
 	@PostMapping("/add")
 	public String saveUser(@RequestParam("email") String email, @RequestParam("password") String password) {
-		User user = new User();
-		String passwordHash;
-		passwordHash = BCrypt.hashpw(password,BCrypt.gensalt()) ;
-		user.setEmail(email);
-		user.setPassword(passwordHash);
-		userService.save(user);
-
-		return "redirect:/users";
-
+		if(existUser(email)) {
+			System.out.println("utilisateur existant");
+			//ajouter message
+		} else {
+			User user = new User();
+			String passwordHash;
+			passwordHash = BCrypt.hashpw(password,BCrypt.gensalt()) ;
+			user.setEmail(email);
+			user.setPassword(passwordHash);
+			userService.save(user);
+		}
+		return "redirect:/login";
 	}
 	
 	@PostMapping("/login")
@@ -46,10 +52,8 @@ public class UserController {
 		User user = new User();
 		user = userService.getUser(email);
 		String pw_hash = user.getPassword();
-		//verifier les trucs pour connecter
-		// si c'est bon 
 		// regarder comment passer un paramètre a une page 
-		// et passer un paramètre connectee"
+		// et passer un paramètre connectee
 		if( BCrypt.checkpw(password, pw_hash) ) {
 		    System.out.println("mot de passe OK");
 		    return "redirect:/";
@@ -62,9 +66,14 @@ public class UserController {
 		// sinon, rediriger sur la page de connexion et 
 		// lever un drapeau erreur
 		
-		//return "redirect:/login";
 		
 	}
+	
+//	@GetMapping("/users/{email}/details")
+//	public String getUser(@PathVariable String email, Model model) {
+//		model.addAttribute("user",userService.getUser(email));
+//		return "users2";
+//	}
 
 	@GetMapping("/users")
 	public String getAllUsers(Model model) {

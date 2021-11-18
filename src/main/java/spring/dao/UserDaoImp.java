@@ -8,10 +8,11 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import spring.model.User;
 
-@Repository
+@Repository @Transactional
 public class UserDaoImp implements UserDao {
 
 	@Autowired
@@ -30,9 +31,12 @@ public class UserDaoImp implements UserDao {
 	}
 
 	@Override
-	public User getUser(String email) {
-		return ((User) sessionFactory.getCurrentSession().createQuery("from User where email = :email").setParameter("email", email)
-				.uniqueResult());
+	public List<User> getUser(String email) {
+		
+		@SuppressWarnings("unchecked")
+		TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("from User where email = :email").setParameter("email", email);
+		return query.getResultList();
+				
 	}
 
 	@Override
