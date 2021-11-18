@@ -24,21 +24,20 @@ public class OrderDaoImp implements OrderDao{
 	}
 
 	@Override
-	public Order getOrder(long id) {
-		return ((Order) sessionFactory.getCurrentSession().createQuery("from orders where id = :id")
-				.setParameter("id", id).uniqueResult());
+	public Order getOrder(long order_id) {
+		return ((Order) sessionFactory.getCurrentSession().createQuery("from orders where order_id = :id")
+				.setParameter("id", order_id).uniqueResult());
 	}
 
 	@Override
 	public void update(Order order) {
-		// TODO Auto-generated method stub
 		//ptn mais thomas mais rends le update ptn tfq
 	}
 
 	@Override
-	public void delete(long id) {
+	public void delete(long order_id) {
 		Session session = sessionFactory.getCurrentSession();
-		Order orderToDelete = session.get(Order.class, id);
+		Order orderToDelete = session.get(Order.class, order_id);
 		session.delete(orderToDelete);
 	}
 

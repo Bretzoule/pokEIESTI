@@ -12,30 +12,18 @@ import javax.persistence.Table;
 public class User {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "user_id")
-	private int id;
-
-	@Column(name = "pseudo")
-	private String pseudo;
+	@Column(name = "email")
+	private String email;
 
 	@Column(name = "password")
 	private String password;
 
-	public int getId() {
-		return id;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getPseudo() {
-		return pseudo;
-	}
-
-	public void setPseudo(String pseudo) {
-		this.pseudo = pseudo;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPassword() {

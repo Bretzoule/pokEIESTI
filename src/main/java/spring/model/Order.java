@@ -1,9 +1,6 @@
 package spring.model;
 
-import java.util.List;
-
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,29 +13,24 @@ public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "order_id", unique = true)
-	private int id;
+	private int order_id;
 
-	@Column(name = "user_id", unique = true)
-	private int user_id;
+	@Column(name = "user_mail")
+	private String user_mail;
 
-	@Embedded
-	@Column(name = "product")
-	private List<Product> product;
-
-	public int getUser_id() {
-		return user_id;
+	public int getOrder_id() {
+		return order_id;
 	}
 
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setOrder_id(int order_id) {
+		this.order_id = order_id;
 	}
 
-	public List<Product> getProduct() {
-		return product;
+	public String getUser_mail() {
+		return user_mail;
 	}
 
-	public void setProduct(List<Product> product) {
-		this.product = product;
+	public void setUser_id(String user_mail) {
+		this.user_mail = user_mail;
 	}
-	
 }

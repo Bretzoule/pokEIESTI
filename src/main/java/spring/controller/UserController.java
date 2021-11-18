@@ -34,7 +34,7 @@ public class UserController {
 		User user = new User();
 		String passwordHash;
 		passwordHash = BCrypt.hashpw(password,BCrypt.gensalt()) ;
-		user.setPseudo(pseudo);
+		user.setEmail(pseudo);
 		user.setPassword(passwordHash);
 		userService.save(user);
 
@@ -74,8 +74,8 @@ public class UserController {
 	}
 
 	@GetMapping("/users/{id}/delete")
-	public String delete(@PathVariable long id) {
-		userService.delete(id);
+	public String delete(@PathVariable String email) {
+		userService.delete(email);
 		return "users";
 	}
 

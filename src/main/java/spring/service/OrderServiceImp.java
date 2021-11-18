@@ -2,46 +2,43 @@ package spring.service;
 
 import java.util.List;
 
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import spring.dao.ProductDao;
-import spring.model.Product;
-import spring.model.Type;
-
+import spring.dao.OrderDao;
 import spring.model.Order;
 
+@Service
 public class OrderServiceImp implements OrderService{
 
-	@Override
+	@Autowired
+	private OrderDao orderDao;
+
+	@Transactional
 	public void save(Order order) {
-		// TODO Auto-generated method stub
-		
+		orderDao.save(order);
 	}
 
-	@Override
-	public Order getOrder(long id) {
-		// TODO Auto-generated method stub
-		return null;
+	@Transactional
+	public void delete(long order_id) {
+		orderDao.delete(order_id);
+	}
+
+	@Transactional(readOnly = true)
+	public List<Order> getAllOrders() {
+		return orderDao.getAllOrders();
+	}
+	
+	@Transactional(readOnly = true)
+	public Order getOrder(long order_id) {
+		return orderDao.getOrder(order_id);
 	}
 
 	@Override
 	public void update(Order order) {
 		// TODO Auto-generated method stub
 		
-	}
-	
-	@Override
-	public void delete(long id) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public List<Order> getAllOrders() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

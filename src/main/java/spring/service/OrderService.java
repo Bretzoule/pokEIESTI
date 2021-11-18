@@ -6,14 +6,10 @@ import spring.model.Order;
 
 public interface OrderService {
 	void save(Order order);
-	Order getOrder(long id);
+	Order getOrder(long order_id);
 	void update(Order order);
-	void delete(long id);
+	void delete(long order_id);
 
 	List<Order> getAllOrders();
-	
-	//List by user?	
-	//List<Order> listByType(User user);
-	
 
 }
