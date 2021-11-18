@@ -23,11 +23,11 @@
 							<h1>Inscrivez-vous</h1>
 							
 							<div class="form-floating m-2">
-						    	<input type="text" class="form-control" id="floatingInput" placeholder="nom@exemple.com" name="signin_mail">
+						    	<input type="text" class="form-control" id="floatingInput" placeholder="nom@exemple.com" name="email">
 						    	<label for="floatingInput">Adresse mail</label>
 				        	</div>
 				        	<div class="form-floating m-2">
-						    	<input type="password" class="form-control" id="floatingPassword" placeholder="Mot de passe" name="signin_mdp">
+						    	<input type="password" class="form-control" id="floatingPassword" placeholder="Mot de passe" name="password">
 						    	<label for="floatingPassword">Mot de passe</label>
 				        	</div>
 							<div class="px-2">

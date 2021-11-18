@@ -28,11 +28,11 @@ public class UserController {
 	}
 
 	@PostMapping("/add")
-	public String saveUser(@RequestParam("pseudo") String pseudo, @RequestParam("password") String password) {
+	public String saveUser(@RequestParam("email") String email, @RequestParam("password") String password) {
 		User user = new User();
 		String passwordHash;
 		passwordHash = BCrypt.hashpw(password,BCrypt.gensalt()) ;
-		user.setEmail(pseudo);
+		user.setEmail(email);
 		user.setPassword(passwordHash);
 		userService.save(user);
 
@@ -41,7 +41,7 @@ public class UserController {
 	}
 	
 	@PostMapping("/login")
-	public String loginUser(@RequestParam("pseudo") String pseudo, @RequestParam("password") String password) {
+	public String loginUser(@RequestParam("email") String email, @RequestParam("password") String password) {
 		//String mdp;
 		String pw_hash =BCrypt.hashpw("test", BCrypt.gensalt());
 		
