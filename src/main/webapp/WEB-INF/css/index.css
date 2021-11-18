@@ -553,16 +553,8 @@ header>.navbar {
     margin: 50px;
 }
 
-.description {
-    padding-left: 20px;
-}
-
 .imageProduit {
     width: 45%;
-}
-
-.description {
-    width: 70%;
 }
 
 .donneesProduit {
@@ -817,3 +809,19 @@ input:checked+.btnSlide:before {
     position: inherit;
     top: -3px;
 }
+
+
+/* DORIAN PRODUCT */
+#product-shop{
+    padding-top: 150px;
+    padding-bottom: 100px;
+}
+
+#product-shop h1{
+    font-size: 60px;
+}
+
+
+
+
+
