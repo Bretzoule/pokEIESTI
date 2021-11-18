@@ -15,16 +15,14 @@
 		<table class="table table-striped">
 			<thead>
 				<tr>
-					<th>#ID</th>
-					<th>Pseudo</th>
+					<th>email</th>
 					<th>Password</th>
 				</tr>
 			</thead>
 
 			<c:forEach var="user" items="${usersModel}">
 				<tr>
-					<td>${user.id}</td>
-					<td>${user.pseudo}</td>
+					<td>${user.email}</td>
 					<td>${user.password}</td>
 			
 				</tr>

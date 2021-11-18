@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import spring.model.User;
+import spring.dao.*;
 import spring.service.UserService;
 
 @Controller
@@ -28,11 +29,11 @@ public class UserController {
 	}
 
 	@PostMapping("/add")
-	public String saveUser(@RequestParam("pseudo") String pseudo, @RequestParam("password") String password) {
+	public String saveUser(@RequestParam("email") String email, @RequestParam("password") String password) {
 		User user = new User();
 		String passwordHash;
 		passwordHash = BCrypt.hashpw(password,BCrypt.gensalt()) ;
-		user.setPseudo(pseudo);
+		user.setEmail(email);
 		user.setPassword(passwordHash);
 		userService.save(user);
 
@@ -41,10 +42,10 @@ public class UserController {
 	}
 	
 	@PostMapping("/login")
-	public String loginUser(@RequestParam("pseudo") String pseudo, @RequestParam("password") String password) {
-		//String mdp;
-		String pw_hash =BCrypt.hashpw("test", BCrypt.gensalt());
-		
+	public String loginUser(@RequestParam("email") String email, @RequestParam("password") String password) {
+		User user = new User();
+		user = userService.getUser(email);
+		String pw_hash = user.getPassword();
 		//verifier les trucs pour connecter
 		// si c'est bon 
 		// regarder comment passer un paramètre a une page 
@@ -72,8 +73,8 @@ public class UserController {
 	}
 
 	@GetMapping("/users/{id}/delete")
-	public String delete(@PathVariable long id) {
-		userService.delete(id);
+	public String delete(@PathVariable String email) {
+		userService.delete(email);
 		return "users";
 	}
 

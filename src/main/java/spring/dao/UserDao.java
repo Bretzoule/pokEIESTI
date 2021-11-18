@@ -7,11 +7,11 @@ import spring.model.User;
 public interface UserDao {
 	void save(User user);
 
-	void delete(long id);
+	void delete(String email);
 
 	void update(User user);
 
 	List<User> list();
 
-	User getUser(long id);
+	User getUser(String email);
 }

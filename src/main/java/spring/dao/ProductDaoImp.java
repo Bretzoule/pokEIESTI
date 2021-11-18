@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 
 import spring.model.Product;
 import spring.model.Type;
-import spring.model.User;
 
 @Repository
 public class ProductDaoImp implements ProductDao {
@@ -36,19 +35,18 @@ public class ProductDaoImp implements ProductDao {
 		Session session = sessionFactory.getCurrentSession();
 		Product productTodelete = session.get(Product.class, id);
 		session.delete(productTodelete);
-
 	}
 
 	@Override
 	public Product getProduct(long id) {
-		return ((Product) sessionFactory.getCurrentSession().createQuery("from Product where id = :id")
+		return ((Product) sessionFactory.getCurrentSession().createQuery("from products where id = :id")
 				.setParameter("id", id).uniqueResult());
 	}
 
 	@Override
 	public List<Product> listByType(Type type) {
 		@SuppressWarnings("unchecked")
-		TypedQuery<Product> query = sessionFactory.getCurrentSession().createQuery("from Product where type = :type")
+		TypedQuery<Product> query = sessionFactory.getCurrentSession().createQuery("from products where type = :type")
 				.setParameter("type", type);
 		return query.getResultList();
 	}

@@ -32,13 +32,13 @@ public class UserServiceImp implements UserService {
 	}
 
 	@Transactional
-	public void delete(long id) {
-		userDao.delete(id);
+	public void delete(String email) {
+		userDao.delete(email);
 
 	}
 
 	@Override
-	public User getUser(long id) {
-		return userDao.getUser(id);
+	public User getUser(String email) {
+		return userDao.getUser(email);
 	}
 }

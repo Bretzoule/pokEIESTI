@@ -12,7 +12,6 @@ import javax.persistence.Enumerated;
 
 
 @Entity
-@Embeddable
 @Table(name = "products")
 public class Product {
 

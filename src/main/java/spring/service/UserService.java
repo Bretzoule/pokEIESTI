@@ -7,10 +7,10 @@ import spring.model.User;
 public interface UserService {
 	void save(User user);
 
-	void delete(long id);
+	void delete(String email);
 
 	List<User> list();
 	
-	User getUser(long id);
+	User getUser(String email);
 
 }
