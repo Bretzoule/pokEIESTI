@@ -32,14 +32,14 @@ public class ProductDaoImp implements ProductDao {
 	}
 
 	@Override
-	public void delete(long id) {
+	public void delete(int id) {
 		Session session = sessionFactory.getCurrentSession();
 		Product productTodelete = session.get(Product.class, id);
 		session.delete(productTodelete);
 	}
 
 	@Override
-	public Product getProduct(long id) {
+	public Product getProduct(int id) {
 		return ((Product) sessionFactory.getCurrentSession().createQuery("from Product where id = :id")
 				.setParameter("id", id).uniqueResult());
 	}

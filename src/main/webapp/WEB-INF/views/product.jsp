@@ -37,18 +37,16 @@
         <div class="container">
             <div class="row details justify-content-center align-items-center">
                 <div class="col-md-4">
-                     <img src="assets/charizard.jpg" class="img-fluid">
+                     <img src="${ product.picture }" class="img-fluid">
                 </div>
                 <div class="col-md-6">
-                    <h1 class="fw-bold mb-0">Dracaufeu</h1>
-                    <h3 class="fw-light fst-italic text-secondary">Carte</h3>
+                    <h1 class="fw-bold mb-0">${ product.name }</h1>
+                    <h3 class="fw-light fst-italic text-secondary">${ product.type }</h3>
                     <hr>
-                    <p class="description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias dignissimos
-                        doloribus ratione quibusdam? Doloremque animi vero impedit voluptates ipsum nostrum eos,
-                        blanditiis cupiditate perferendis ipsam ea sed! Dolor, voluptatibus fugit.</p>
-                    <h2><span class="fw-bold text-primary">89.99€</span> <del>109.99€</del></h2>
+                    <p class="description">${ product.description }</p>
+                    <h2><span class="fw-bold text-primary">${ product.price }€</span> <del>109.99€</del></h2>
                     <a type="button" class="btn btn-primary btn-lg d-block m-auto my-5"><i class="bi bi-cart"></i> Ajouter au panier</a>
-                    <p class="hurry">Vite ! Il reste seulement <span class="text-danger fw-bold">4 exemplaires</span> de cet article.</p>
+                    <p class="hurry">Vite ! Il reste seulement <span class="text-danger fw-bold">${ product.stock } exemplaires</span> de cet article.</p>
                 </div>
             </div>
         </div>
