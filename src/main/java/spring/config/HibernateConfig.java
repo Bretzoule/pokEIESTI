@@ -33,7 +33,7 @@ public class HibernateConfig {
 		factoryBean.setDataSource(getDataSource());
 		//factoryBean.setConfigLocation(context.getResource("classpath:hibernate.cfg.xml"));
 		Properties properties = new Properties();
-		properties.put("hibernate.hbm2ddl.auto", "create");
+		properties.put("hibernate.hbm2ddl.auto", "update");
 		properties.put("hibernate.show_sql", "true");
 		properties.put("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
 		factoryBean.setHibernateProperties(properties);

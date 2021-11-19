@@ -21,7 +21,7 @@
 
 					<form action="login" method="post">  
 						
-						<h1>Connectez-vous</h1>
+						<h1 class="py-3">Connectez-vous</h1>
 						<!-- Pseudo : <input type="text" name="pseudo"/> <br><br>   
 						Password : <input type="text" name="password"/> <br><br>   
 						<button name="submit" type="submit">Se connecter</button> -->

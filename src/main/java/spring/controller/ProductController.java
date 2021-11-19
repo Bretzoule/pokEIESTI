@@ -26,7 +26,8 @@ public class ProductController {
 	}
 	
 	@GetMapping("/product")
-	public String getSingleProduct() {
+	public String getSingleProduct(@RequestParam() int id, Model model) {
+		model.addAttribute("product", productService.getProduct(id));
 		return ("product");
 	}
 
