@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <html>  
 <head>
 	<title>Se connecter</title>
@@ -50,5 +52,20 @@
 			<!-- </main> -->
 		</div>
 	</div>
+		<c:if test="${erreurUser}">
+			<div class="alert alert-warning float alert-dismissible position-absolute myAlert">
+				<strong>Erreur !</strong> L'email est deja prise <a href="#" class="closebtn" data-dismiss="alert">×</a>
+			</div>
+		</c:if>
+ 		<c:if test="${erreurMdp}">
+			<div class="alert alert-warning float alert-dismissible position-absolute myAlert">
+				<strong>Erreur !</strong> Le mot de passe est incorrect <a href="#" class="closebtn" data-dismiss="alert">×</a>
+			</div>
+		</c:if>
+		<c:if test="${erreurNoUser}">
+			<div class="alert alert-warning float alert-dismissible position-absolute myAlert">
+				<strong>Erreur !</strong> Aucun utilisteur enregistré avec cet email <a href="#" class="closebtn" data-dismiss="alert">×</a>
+			</div>
+		</c:if> 
 	</body>  
 </html>  

@@ -15,7 +15,7 @@ public class User {
 	@Column(name = "email")
 	private String email;
 
-	@Column(name = "password")
+	@Column(nullable=false, name = "password")
 	private String password;
 
 	public String getEmail() {
