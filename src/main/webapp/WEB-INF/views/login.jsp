@@ -20,6 +20,9 @@
 					<form action="login" method="post">  
 						
 						<h1>Connectez-vous</h1>
+						<!-- Pseudo : <input type="text" name="pseudo"/> <br><br>   
+						Password : <input type="text" name="password"/> <br><br>   
+						<button name="submit" type="submit">Se connecter</button> -->
 						 
 						<div class="form-floating m-2">
 					    	<input type="text" class="form-control" id="email" placeholder="nom@exemple.com" name="email">
