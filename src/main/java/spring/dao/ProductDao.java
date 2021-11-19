@@ -8,11 +8,11 @@ import spring.model.Type;
 public interface ProductDao {
 	void save(Product product);
 
-	void delete(long id);
+	void delete(int id);
 
 	List<Product> list();
 
-	Product getProduct(long id);
+	Product getProduct(int id);
 
 	List<Product> listByType(Type type);
 
