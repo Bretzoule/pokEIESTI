@@ -24,6 +24,11 @@ public class ProductController {
 		}
 		return ("products");
 	}
+	
+	@GetMapping("/product")
+	public String getSingleProduct() {
+		return ("product");
+	}
 
 	@GetMapping("/products/addProduct")
 	public String reachAddProduct() {
