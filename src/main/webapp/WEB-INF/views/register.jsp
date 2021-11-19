@@ -31,7 +31,7 @@
 						    	<label for="floatingPassword">Mot de passe</label>
 				        	</div>
 							<div class="px-2">
-								<input class="btn-lg btn-primary text-white w-100" id="connexion" value="Creer mon compte" type="submit"/>
+								<input class="btn-lg btn-primary form-control text-white w-100" id="connexion" value="Creer mon compte" type="submit"/>
 							</div>
 				        
 					
