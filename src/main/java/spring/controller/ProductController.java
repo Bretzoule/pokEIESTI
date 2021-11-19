@@ -25,7 +25,7 @@ public class ProductController {
 		return ("products");
 	}
 	
-	@GetMapping("/product")
+	@GetMapping("/products/{id}")
 	public String getSingleProduct() {
 		return ("product");
 	}
