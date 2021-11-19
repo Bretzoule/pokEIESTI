@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="css/login.css">
 </head>
 <body class="text-center"> 
-	<img style="width:200px;margin-right:20px;" class="m-5" id="logoTopDroit" src="./assets/PokEISTIWithText.png" alt="logo"> 
+	<img style="width:200px;margin-right:20px;" class="m-5" id="logoTopDroit" src="assets/PokEISTIWithText.png" alt="logo"> 
 	<div class="container">
 		<div class="row d-flex justify-content-md-center">
 			<!-- <main class="form-signin p-4"> -->

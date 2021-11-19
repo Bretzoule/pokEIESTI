@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import spring.model.User;
 
 @Repository @Transactional
-public class UserDaoImp implements UserDao {
+public class UserDaoImp implements UserDao  {
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -36,7 +36,6 @@ public class UserDaoImp implements UserDao {
 		@SuppressWarnings("unchecked")
 		TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("from User where email = :email").setParameter("email", email);
 		return query.getResultList();
-				
 	}
 
 	@Override
@@ -44,7 +43,6 @@ public class UserDaoImp implements UserDao {
 		Session session = sessionFactory.getCurrentSession();
 		User userTodelete = session.get(User.class, email);
 		session.delete(userTodelete);
-
 	}
 
 	@Override

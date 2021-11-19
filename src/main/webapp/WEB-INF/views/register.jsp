@@ -19,7 +19,7 @@
 		<div class="row justify-content-md-center text-center">
 			<div class="col-md-6">
 				<form action="add" method="post">  
-							<img style="width:200px;margin-right:20px;" class="m-5" id="logoTopDroit" src="./assets/PokEISTIWithText.png" alt="logo"> 
+							<img style="width:200px;margin-right:20px;" class="m-5" id="logoTopDroit" src="assets/PokEISTIWithText.png" alt="logo"> 
 							<h1>Inscrivez-vous</h1>
 							
 							<div class="form-floating m-2">
