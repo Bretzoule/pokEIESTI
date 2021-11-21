@@ -40,16 +40,10 @@ public class ProductController {
 		}
 		return ("products");
 	}
-<<<<<<< HEAD
-	
-	@GetMapping("/products/{id}")
-	public String getSingleProduct() {
-=======
 
 	@GetMapping("/product")
 	public String getSingleProduct(@RequestParam() int id, Model model) {
 		model.addAttribute("product", productService.getProduct(id));
->>>>>>> d31981f340cd116286e6f5e181c6c2832d765eb6
 		return ("product");
 	}
 
