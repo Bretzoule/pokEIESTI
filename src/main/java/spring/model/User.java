@@ -2,8 +2,8 @@ package spring.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -17,6 +17,10 @@ public class User {
 
 	@Column(nullable=false, name = "password")
 	private String password;
+	
+	@Column(nullable=false, name = "role")
+	@Enumerated(EnumType.STRING)
+	private Role role;
 
 	public String getEmail() {
 		return email;
@@ -33,5 +37,13 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}	
 
 }

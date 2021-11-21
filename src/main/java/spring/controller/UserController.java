@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
+import spring.model.Role;
 import spring.model.User;
 import spring.service.UserService;
 
@@ -33,6 +34,7 @@ public class UserController {
 	
 	@PostMapping("/add")
 	public String saveUser(@RequestParam("email") String email, @RequestParam("password") String password, Model model) {
+		System.out.println(Role.values());
 		if(existUser(email)) {
 			System.out.println("utilisateur existant");
 			model.addAttribute("erreurUser", Boolean.TRUE);
@@ -40,9 +42,10 @@ public class UserController {
 			model.addAttribute("erreurUser", Boolean.FALSE);
 			User user = new User();
 			String passwordHash;
-			passwordHash = BCrypt.hashpw(password,BCrypt.gensalt()) ;
+			passwordHash = BCrypt.hashpw(password,BCrypt.gensalt());
 			user.setEmail(email);
 			user.setPassword(passwordHash);
+			user.setRole(Role.USER);
 			userService.save(user);
 		}
 		return "/login";
