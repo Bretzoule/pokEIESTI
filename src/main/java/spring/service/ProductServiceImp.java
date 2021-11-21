@@ -39,7 +39,7 @@ public class ProductServiceImp implements ProductService {
 	public List<Product> listByType(Type type) {
 		return productDao.listByType(type);
 	}
-
+	
 	@Override
 	public void update(Product product) {
 	}

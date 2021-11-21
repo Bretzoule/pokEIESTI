@@ -18,7 +18,7 @@
 		<div class="row justify-content-md-center text-center">
 			<div class="col-md-6">
 				<form:form action="addProduct/add" method="post"
-					modelAttribute="product">
+					modelAttribute="product" enctype='multipart/form-data'>
 					<img style="width: 200px; margin-right: 20px;" class="m-5"
 						id="logoTopDroit" src="assets/PokEISTIWithText.png" alt="logo">
 					<h1>Ajouter un produit</h1>
@@ -26,27 +26,36 @@
 					<div class="form-floating m-2">
 						<form:input type="text" class="form-control" id="floatingInput"
 							path="name" />
+							<form:errors path="name"/>
 						<label for="floatingInput">Nom du produit</label>
 					</div>
 					<div class="form-floating m-2">
 						<form:input type="text" class="form-control" id="floatingInput"
 							path="description" />
+							<form:errors path="description"/>
 						<label for="floatingInput">Description du produit</label>
 					</div>
 					<div class="form-floating m-2">
 						<form:input type="number" class="form-control" id="floatingInput"
 							path="price" step=".01" />
+							<form:errors path="price"/>
 						<label for="floatingInput">Prix</label>
 					</div>
 					<div class="form-floating m-2">
 						<form:input type="number" class="form-control" id="floatingInput"
 							path="stock" />
+							<form:errors path="stock"/>
 						<label for="floatingInput">Stock</label>
 					</div>
 					<form:select class="form-select m-2" path="type">
-						<form value="" label="*** Séléctionner Catégorie ***" />
+						<option value="" label="*** Séléctionner Catégorie ***" />
 						<form:options items="${type}" />
 					</form:select>
+					<form:errors path="type"/>
+					<div class="mb-3">
+						<input name="file" accept="image/jpeg" class="form-control" type="file" id="formFile">
+					</div>
+					
 					<div class="px-2">
 						<input class="btn-lg btn-primary form-control text-white w-100"
 							value="Ajouter produit." type="submit" />

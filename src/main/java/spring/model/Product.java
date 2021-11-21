@@ -7,9 +7,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-
 
 @Entity
 @Table(name = "products")
@@ -21,16 +22,20 @@ public class Product {
 	private int id;
 
 	@Column(name = "name")
+	@Size(min=1, message = "Ce champ est requis.")
 	private String name;
 
 	@Column(name = "description")
 	@Lob
+	@Size(min=1,message = "Ce champ est requis.")
 	private String description;
 
 	@Column(name = "price")
+	@Min(value = 0L, message = "Ce champ doit être positif.")
 	private double price;
 
 	@Column(name = "stock")
+	@Min(value = 1, message = "Ce champ doit être supérieur à 0.")
 	private int stock;
 
 	@Column(name = "picture")
@@ -87,7 +92,7 @@ public class Product {
 	public void setType(Type type) {
 		this.type = type;
 	}
-	
+
 	public String getPicture() {
 		return picture;
 	}
