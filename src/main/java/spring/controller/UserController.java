@@ -32,11 +32,6 @@ public class UserController {
 		return(userService.getUser(email)!=null);
 	}
 	
-	@PostMapping("/home")
-	public String reachHomePage() {
-		return "redirect:/";
-	}
-	
 	@PostMapping("/add")
 	public String saveUser(@RequestParam("email") String email, @RequestParam("password") String password, Model model) {
 		System.out.println(Role.values());

@@ -57,7 +57,7 @@
 					<section class="products">
 				</c:if>
 				<div class="product-card">
-					<a href="/products/detail/${product.id}">
+					<a href="product?id=${product.id}">
 						<div class="product-image">
 							<img src="${ product.picture }">
 						</div>
