@@ -61,7 +61,7 @@ public class UserController {
 			if( BCrypt.checkpw(password, pw_hash) ) {
 			    System.out.println("mot de passe OK");
 			    model.addAttribute("erreurMdp", Boolean.FALSE);
-			    return "/";
+			    return "redirect:/";
 			}else {
 			    System.out.println("Mauvais mdp");
 			    model.addAttribute("erreurMdp", Boolean.TRUE);
