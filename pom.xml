@@ -21,6 +21,7 @@
 		<hsqldb.version>1.8.0.10</hsqldb.version>
 	</properties>
 	<dependencies>
+
 		<!-- Spring MVC Dependency -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -40,6 +41,21 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
 			<version>${spring.version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.11.0</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.4</version>
 		</dependency>
 
 		<!-- Spring Security Config -->
@@ -149,15 +165,15 @@
 			<artifactId>commons-dbcp2</artifactId>
 			<version>2.2.0</version>
 		</dependency>
-		
+
 		<dependency>
-		    <groupId>javax.json</groupId>
-		    <artifactId>javax.json-api</artifactId>
-    		<version>1.0</version>
+			<groupId>javax.json</groupId>
+			<artifactId>javax.json-api</artifactId>
+			<version>1.0</version>
 		</dependency>
 	</dependencies>
-	
-	
+
+
 
 	<build>
 		<sourceDirectory>src/main/java</sourceDirectory>
