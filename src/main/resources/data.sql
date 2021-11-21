@@ -106,6 +106,14 @@ VALUES (
         5,
         'FIGURINE'
     );
+    
 -- --------------------------------------------------------
 -- Déchargement des données de la table `users`
 --
+
+INSERT INTO `users`(`email`,`password`,`role`) VALUES(
+	('noamerdos@cy-tech.fr','test','ADMIN'),
+	('leflomerdoch@cy-tech.fr','oui','USER'),
+	('lagamerde@cy-tech.fr','grdg','LISTENER'),
+	('dodomerdostick@cy-tech.fr','sdxvsrf','ADMIN')
+)
