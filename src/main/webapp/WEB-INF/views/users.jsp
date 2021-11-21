@@ -17,6 +17,7 @@
 				<tr>
 					<th>email</th>
 					<th>Password</th>
+					<th>Role</th>
 				</tr>
 			</thead>
 
@@ -24,7 +25,7 @@
 				<tr>
 					<td>${user.email}</td>
 					<td>${user.password}</td>
-			
+					<td>${user.role}</td>
 				</tr>
 			</c:forEach>
 		</table>

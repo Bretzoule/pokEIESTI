@@ -12,7 +12,12 @@
 	<link rel="stylesheet" href="css/login.css">
 </head>
 <body class="text-center"> 
-	<img style="width:200px;margin-right:20px;" class="m-5" id="logoTopDroit" src="assets/PokEISTIWithText.png" alt="logo"> 
+	<form action="home" method="post">
+		<button class="btn btn-link" type="submit">
+			<img style="width:200px;margin-right:20px;" class="m-5" id="logoTopDroit" src="assets/PokEISTIWithText.png" alt="logo"> 
+		</button>
+	</form>
+	
 	<div class="container">
 		<div class="row d-flex justify-content-md-center">
 			<!-- <main class="form-signin p-4"> -->
