@@ -21,7 +21,7 @@ public class ProductServiceImp implements ProductService {
 	}
 
 	@Transactional
-	public void delete(long id) {
+	public void delete(int id) {
 		productDao.delete(id);
 	}
 
@@ -31,7 +31,7 @@ public class ProductServiceImp implements ProductService {
 	}
 
 	@Override
-	public Product getProduct(long id) {
+	public Product getProduct(int id) {
 		return productDao.getProduct(id);
 	}
 
@@ -39,7 +39,7 @@ public class ProductServiceImp implements ProductService {
 	public List<Product> listByType(Type type) {
 		return productDao.listByType(type);
 	}
-
+	
 	@Override
 	public void update(Product product) {
 	}

@@ -53,7 +53,7 @@
 		</div>
 		<div id="centerPanel">
 			<c:forEach var="product" varStatus="loop" items="${productList}">
-				<c:if test="${loop.index}%3 == 0">
+				<c:if test="${loop.index%3 == 0}">
 					<section class="products">
 				</c:if>
 				<div class="product-card">
@@ -68,7 +68,7 @@
 						</div>
 					</a>
 				</div>
-				<c:if test="(${loop.index}%3 == 0) && (${loop.index} != 0)">
+				<c:if test="${((loop.index+1)%3 == 0) && (loop.index != 0)}">
 					</section>
 				</c:if>
 			</c:forEach>

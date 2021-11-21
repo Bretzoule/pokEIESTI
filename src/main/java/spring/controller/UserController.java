@@ -32,11 +32,12 @@ public class UserController {
 	}
 	
 	@PostMapping("/add")
-	public String saveUser(@RequestParam("email") String email, @RequestParam("password") String password) {
+	public String saveUser(@RequestParam("email") String email, @RequestParam("password") String password, Model model) {
 		if(existUser(email)) {
 			System.out.println("utilisateur existant");
-			//ajouter message
+			model.addAttribute("erreurUser", Boolean.TRUE);
 		} else {
+			model.addAttribute("erreurUser", Boolean.FALSE);
 			User user = new User();
 			String passwordHash;
 			passwordHash = BCrypt.hashpw(password,BCrypt.gensalt()) ;
@@ -44,23 +45,34 @@ public class UserController {
 			user.setPassword(passwordHash);
 			userService.save(user);
 		}
-		return "redirect:/login";
+		return "/login";
 	}
 	
 	@PostMapping("/login")
-	public String loginUser(@RequestParam("email") String email, @RequestParam("password") String password) {
-		User user = new User();
-		user = userService.getUser(email);
-		String pw_hash = user.getPassword();
+	public String loginUser(@RequestParam("email") String email, @RequestParam("password") String password, Model model) {
+		
 		// regarder comment passer un paramètre a une page 
 		// et passer un paramètre connectee
-		if( BCrypt.checkpw(password, pw_hash) ) {
-		    System.out.println("mot de passe OK");
-		    return "redirect:/";
-		}else {
-		    System.out.println("Mauvais mdp");
-		    return "redirect:/login";
+		if(existUser(email)) {
+			User user = new User();
+			user = userService.getUser(email);
+			String pw_hash = user.getPassword();
+			model.addAttribute("erreurNoUser", Boolean.FALSE);
+			if( BCrypt.checkpw(password, pw_hash) ) {
+			    System.out.println("mot de passe OK");
+			    model.addAttribute("erreurMdp", Boolean.FALSE);
+			    return "/";
+			}else {
+			    System.out.println("Mauvais mdp");
+			    model.addAttribute("erreurMdp", Boolean.TRUE);
+			    return "/login";
+			}
+		} else {
+			System.out.println("Utilisateur n'existe pas");
+			model.addAttribute("erreurNoUser", Boolean.TRUE);
+			return "/login";
 		}
+		
 		
 		
 		// sinon, rediriger sur la page de connexion et 
@@ -91,11 +103,12 @@ public class UserController {
 	public String saveUser(@ModelAttribute("user") @Valid User user, BindingResult result, Model model) {
 
 		if (result.hasErrors()) {
+			System.out.println("Erreurs");
 			model.addAttribute("users", userService.list());
-			return "editUsers";
+			return "register";
 		}
 
 		userService.save(user);
-		return "redirect:/createUser";
+		return "redirect:/users";
 	}
 }

@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <html>  
 <head>
 	<title>Se connecter</title>
@@ -10,16 +12,16 @@
 	<link rel="stylesheet" href="css/login.css">
 </head>
 <body class="text-center"> 
-	<img style="width:200px;margin-right:20px;" class="m-5" id="logoTopDroit" src="./assets/PokEISTIWithText.png" alt="logo"> 
+	<img style="width:200px;margin-right:20px;" class="m-5" id="logoTopDroit" src="assets/PokEISTIWithText.png" alt="logo"> 
 	<div class="container">
-		<div class="row justify-content-md-center">
+		<div class="row d-flex justify-content-md-center">
 			<!-- <main class="form-signin p-4"> -->
 				
 				<div class="col-md-5">
 
 					<form action="login" method="post">  
 						
-						<h1>Connectez-vous</h1>
+						<h1 class="py-3">Connectez-vous</h1>
 						<!-- Pseudo : <input type="text" name="pseudo"/> <br><br>   
 						Password : <input type="text" name="password"/> <br><br>   
 						<button name="submit" type="submit">Se connecter</button> -->
@@ -33,7 +35,7 @@
 					    	<label for="floatingPassword">Mot de passe</label>
 			        	</div>
 						<div class="px-2">
-							<input class="btn-lg btn-primary text-white w-100" id="connexion" value="Se connecter" type="submit"/>
+							<input class="btn-lg btn-primary form-control text-white w-100" id="connexion" value="Se connecter" type="submit"/>
 						</div>
 			        
 				
@@ -42,7 +44,7 @@
 				<div class="col-md-1">
   					<div class="vr" style="height: 100%;"></div>
 				</div>
-				<div class="col-md-5">
+				<div class="col-md-5 align-self-center">
 					<h1>Vous n'avez pas de compte ?</h1><br/>
 					<a class="text-white btn btn-primary btn-lg d-block" href="register">Inscrivez vous ici</a>
 					
@@ -50,5 +52,20 @@
 			<!-- </main> -->
 		</div>
 	</div>
+		<c:if test="${erreurUser}">
+			<div class="alert alert-warning float alert-dismissible position-absolute myAlert">
+				<strong>Erreur !</strong> L'email est deja prise <a href="#" class="closebtn" data-dismiss="alert">×</a>
+			</div>
+		</c:if>
+ 		<c:if test="${erreurMdp}">
+			<div class="alert alert-warning float alert-dismissible position-absolute myAlert">
+				<strong>Erreur !</strong> Le mot de passe est incorrect <a href="#" class="closebtn" data-dismiss="alert">×</a>
+			</div>
+		</c:if>
+		<c:if test="${erreurNoUser}">
+			<div class="alert alert-warning float alert-dismissible position-absolute myAlert">
+				<strong>Erreur !</strong> Aucun utilisteur enregistré avec cet email <a href="#" class="closebtn" data-dismiss="alert">×</a>
+			</div>
+		</c:if> 
 	</body>  
 </html>  
