@@ -41,8 +41,8 @@ public class UserDaoImp implements UserDao  {
 	@Override
 	public void delete(String email) {
 		Session session = sessionFactory.getCurrentSession();
-		User userTodelete = session.get(User.class, email);
-		session.delete(userTodelete);
+		User userToDelete = getUser(email).get(0);
+		session.delete(userToDelete);
 	}
 
 	@Override

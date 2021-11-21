@@ -34,7 +34,6 @@ public class UserServiceImp implements UserService {
 	@Transactional
 	public void delete(String email) {
 		userDao.delete(email);
-
 	}
 
 	@Override

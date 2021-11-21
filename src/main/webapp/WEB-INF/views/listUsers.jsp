@@ -38,31 +38,25 @@
 		<div class="container">
 			<div class="row">
 				<div class="col mb-3">
-					<h1 class="text-center py-4">Liste des produits</h1>
+					<h1 class="text-center py-4">Liste des utilisateurs</h1>
 					<div class="table-responsive table-lg mt-3">
 						<table class="table table-bordered">
 							<thead>
 								<tr>
-									<th>ID</th>
-									<th>Nom</th>
-									<th>Prix</th>
-									<th>Stock</th>
-									<th>Type</th>
+									<th>Adresse mail</th>
+									<th>Rôle</th>
 									<th class="text-center">Actions</th>
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach var="product" items="${productList}">
+								<c:forEach var="user" items="${userList}">
 									<tr>
-										<td class="text-nowrap align-middle">${product.id}</td>
-										<td class="text-nowrap align-middle">${product.name}</td>
-										<td class="text-nowrap align-middle">${product.price}</td>
-										<td class="text-nowrap align-middle">${product.stock}</td>
-										<td class="text-nowrap align-middle">${product.type}</td>
+										<td class="text-nowrap align-middle">${user.email}</td>
+										<td class="text-nowrap align-middle">${user.role}</td>
 										<td class="text-center align-middle"><a
-											class="btn btn-primary" href="editProduct/${product.id}"><i
+											class="btn btn-primary" href="#"><i
 												class="bi bi-pencil-fill"></i> Modifier</a> <a
-											class="btn btn-danger" href="removeProduct/${product.id}"><i
+											class="btn btn-danger" href="usersDelete/${user.email}"><i
 												class="bi bi-trash-fill"></i> Supprimer</a></td>
 									</tr>
 								</c:forEach>

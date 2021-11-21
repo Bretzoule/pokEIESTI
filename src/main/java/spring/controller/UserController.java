@@ -6,11 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import spring.model.Role;
@@ -75,13 +78,8 @@ public class UserController {
 			model.addAttribute("erreurNoUser", Boolean.TRUE);
 			return "/login";
 		}
-		
-		
-		
 		// sinon, rediriger sur la page de connexion et 
 		// lever un drapeau erreur
-		
-		
 	}
 	
 //	@GetMapping("/users/{email}/details")
@@ -92,14 +90,14 @@ public class UserController {
 
 	@GetMapping("/users")
 	public String getAllUsers(Model model) {
-		model.addAttribute("usersModel", userService.list());
-		return "users";
+		model.addAttribute("userList", userService.list());
+		return "listUsers";
 	}
 
-	@GetMapping("/users/{id}/delete")
-	public String delete(@PathVariable String email) {
+	@GetMapping("/usersDelete/{email:.+}")
+	public String delete(@PathVariable("email") String email) {
 		userService.delete(email);
-		return "users";
+		return "redirect:/users";
 	}
 
 	@PostMapping("/addUser")
@@ -112,6 +110,6 @@ public class UserController {
 		}
 
 		userService.save(user);
-		return "redirect:/users";
+		return "redirect:/listUsers";
 	}
 }
