@@ -38,23 +38,24 @@ public class WebMvcConfig implements WebMvcConfigurer {
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/WEB-INF/**").addResourceLocations("classpath://");
 		registry.addResourceHandler("/assets/**").addResourceLocations("/WEB-INF/assets/");
+		registry.addResourceHandler("/assets/products/**").addResourceLocations("/WEB-INF/assets/products/");
 		registry.addResourceHandler("/css/**").addResourceLocations("/WEB-INF/css/");
 		registry.addResourceHandler("/js/**").addResourceLocations("/WEB-INF/js/");
+
 	}
 
 	@Override
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
 		configurer.enable();
 	}
-	
-	
-	  @Bean(name = "multipartResolver")
-	    public MultipartResolver getMultipartResolver() {
-	        CommonsMultipartResolver resover = new CommonsMultipartResolver();
-	        // 1MB
-	        resover.setMaxUploadSize(10000000);
 
-	        return resover;
-	    }
+	@Bean(name = "multipartResolver")
+	public MultipartResolver getMultipartResolver() {
+		CommonsMultipartResolver resover = new CommonsMultipartResolver();
+		// 1MB
+		resover.setMaxUploadSize(10000000);
+
+		return resover;
+	}
 
 }

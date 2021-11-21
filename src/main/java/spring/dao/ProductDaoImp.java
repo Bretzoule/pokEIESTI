@@ -54,6 +54,9 @@ public class ProductDaoImp implements ProductDao {
 
 	@Override
 	public void update(Product product) {
+		Session session = sessionFactory.getCurrentSession();
+		session.update(product);
+		
 	}
 
 }
