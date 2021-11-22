@@ -35,8 +35,7 @@
 					</div>
 					<div class="col-md-7 order-md-1">
 						<h2 class="text-uppercase text-primary">
-							Trading card game
-							</h1>
+							Trading card game</h2>
 							<h1>La référence de l'achat de cartes Pokémon</h1>
 							<div class="text-center mt-5">
 								<a href="#collection"
@@ -46,7 +45,6 @@
 							</div>
 					</div>
 				</div>
-
 			</div>
 		</section>
 
