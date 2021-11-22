@@ -37,8 +37,12 @@ public class OrderServiceImp implements OrderService{
 
 	@Override
 	public void update(Order order) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
+	}
+	
+	@Override
+	public void confirmOrder(long order_id) {
+		// TODO Auto-generated method stub	
 	}
 
 }
