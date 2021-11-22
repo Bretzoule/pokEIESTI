@@ -34,14 +34,14 @@
 						<li><a class="dropdown-item" href="products?category=3">Nos
 								coffrets</a></li>
 					</ul> 
-					<c:if test="${sessionScope.userConnecte==false}">
+					<%-- <c:if test="${sessionScope.userConnecte==false}"> --%>
 						<li class="nav-item"><a class="nav-link" href="login">Se
 								connecter</a></li>
-					</c:if> <c:if test="${sessionScope.userConnecte}">
+					<%-- </c:if>  --%><c:if test="${sessionScope.userConnecte}">
 						<li class="nav-item"><a class="nav-link" href="panier">Votre
 								panier</a></li>
 					</c:if> <c:if test="${sessionScope.userConnecte}">
-						<li class="nav-item"><a class="nav-link text-danger" href="#">Se
+						<li class="nav-item"><a class="nav-link text-danger" href="logout">Se
 								deconnecter</a></li>
 					</c:if>
 				</li>
