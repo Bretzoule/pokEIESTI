@@ -1,8 +1,10 @@
 package spring.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +30,7 @@ public class UserController {
 	public String reachLoginPage() {
 		return "login";
 	}
-
+	
 	public boolean existUser(String email) {
 		return(userService.getUser(email)!=null);
 	}
@@ -102,4 +104,12 @@ public class UserController {
 		userService.save(user);
 		return "redirect:/listUsers";
 	}
+	
+	@GetMapping("/logout")
+	public String logOut(HttpServletRequest request) {
+		HttpSession session = request.getSession(true);
+		session.invalidate();
+		return "redirect:/";
+	}
+
 }
