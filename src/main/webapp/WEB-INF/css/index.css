@@ -65,35 +65,35 @@ html, body {
 }
 
 #slide1 {
-    background: url(../assets/bougainvilleamainpage.png);
+    background: url(../assets/evoli-figurine.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
 }
 
 #slide2 {
-    background: url(../assets/rincebouteillefullmenu.png);
+    background: url(../assets/pokemon-25ans.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
 }
 
 #slide3 {
-    background: url(../assets/hibiscusfullmenu.png);
+    background: url(../assets/pokemon-booster.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
 }
 
 #slide4 {
-    background: url(../assets/chamaedoreafullmenu.png);
+    background: url(../assets/pokemon-coffret.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
 }
 
 #slide5 {
-    background: url(../assets/pothosfullmenu.png);
+    background: url(../assets/pokemon-unite.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
