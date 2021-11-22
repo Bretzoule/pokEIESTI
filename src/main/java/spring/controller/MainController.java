@@ -17,9 +17,4 @@ public class MainController {
         return ("register");
     }
     
-    @GetMapping("/panier")
-	public String reachLoginPage() {
-		return "panier";
-	}
-    
 }

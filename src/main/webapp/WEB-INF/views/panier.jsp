@@ -22,6 +22,7 @@
 	<div class="container my-5">
 		<div class="row d-flex justify-content-md-center">
 			<h1>Mon panier</h1>
+			
 			<table class="table">
 				<thead>
 					<tr>
@@ -32,12 +33,12 @@
 						<th scope="col">Supprimer</th>
 					</tr>
 				</thead>
-				<c:forEach var="entry" items="${sessionScope.panier}">
+				<c:forEach var="entities" items="${elementPanier}">
 					<tr>
-						<td scope="row"><c:out value="${entry.key}"/></td>
-						<td><c:out value="${entry.value}"/></td>
-						<td></td>
-						<td></td>
+						<td scope="row"><c:out value="${entities.product.name}"/></td>
+						<td><c:out value="${entities.quantity}"/></td>
+						<td><c:out value="${entities.product.price}"/></td>
+						<td><c:out value="${entities.product.price*entities.quantity}"/></td>
 						<td>X</td>
 					</tr>
 				</c:forEach>	
