@@ -1,12 +1,5 @@
-<<<<<<< HEAD
-<%@ page pageEncoding="UTF-8"%>
-=======
 <%@ page pageEncoding="UTF-8" %>
 <%@ page session="true"%>
-<<<<<<< HEAD
->>>>>>> cf4727ba7921d961cbb3ecb3efbe1650a9223736
-=======
->>>>>>> cf4727ba7921d961cbb3ecb3efbe1650a9223736
 <!DOCTYPE html>
 <html>
 <head>
