@@ -17,7 +17,6 @@
 	          <a class="nav-link" href="login">Se connecter</a>
 	        </li>
         </c:if>
-
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Nos produits
@@ -36,6 +35,12 @@
 	          <a class="nav-link" href="panier">Votre panier</a>
 	        </li>
         </c:if>
+        <c:if test="${sessionScope.userConnecte}">
+	        <li class="nav-item">
+	          <a class="nav-link text-danger" href="#">Se deconnecter</a>
+	        </li>
+        </c:if>
+        
         
       </ul>
       <form class="d-flex">
