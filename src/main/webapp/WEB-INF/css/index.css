@@ -1,13 +1,109 @@
 @charset "ISO-8859-1";
 
+
+
+
+/* COLOR VARIABLES */
+:root {
+  --primary: #00AEEF;
+  --dark-primary: #004FA3;
+  --white: #fff;
+}
+
+
+
+
+/* BOOSTRAP OVERRIDE */
+.btn-outline-light:hover{
+    color:#0d6efd !important;
+}
+/* .btn-primary,
+.btn-primary:focus,
+.btn-primary:active {
+    color: var(--white);
+    background-color: var(--primary);
+    border-color: var(--primary);
+    box-shadow: none;
+}
+
+.btn-primary:hover {
+    color: var(--dark-primary);
+    background-color: transparent;
+    border: none;
+} */
+
+
+
+
+/* GENERAL */
 html, body {
     margin: 0;
     padding: 0;
 }
 
+a{
+	text-decoration: none;
+}
 
 
-/* Carousel 1ère page */
+
+
+/* NAVBAR */
+
+
+
+
+
+/* HOMEPAGE */
+#homepage h1:not(#heading h1){
+    font-size: 55px;
+}
+
+#homepage #heading{
+    height: 87vh;
+}
+
+#homepage #heading h2{
+    letter-spacing: 5px;
+    font-size:25px;
+}
+
+#homepage #heading h1{
+    font-size:60px;
+    line-height: 60px;
+}
+
+#homepage #collection{
+    padding-top: 70px;
+}
+
+#homepage #collection p{
+    font-size: 24px;
+    font-weight: 600;
+}
+
+#homepage #reviews{
+    padding-top: 150px;
+    padding-bottom: 70px;
+}
+
+#homepage #reviews .review-card img{
+    width: 70px;
+}
+
+#homepage #reviews .review-card{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+#homepage #reviews .review-card i{
+    font-size: 23px;
+    color: #0d6efd;
+}
+
+#homepage #contact h1{
+    font-size: 70px;
+}
+
 /* merci miha sur Codepen https://codepen.io/mihacreanest/pen/QxKVZQ */
 #slider>[type=radio] {
     display: none;
@@ -18,8 +114,8 @@ html, body {
 }
 
 #slider {
-    height: 40vw;
-    width: 40vw;
+    height: 400px;
+    width: 400px;
     margin-bottom: 20px;
     position: relative;
     perspective: 1000px;
@@ -120,10 +216,8 @@ html, body {
     /* encore le trix pour cacher le texte */
 }
 
-/* Recherche */
 
-
-/* DORIAN PRODUCT */
+/* PRODUCT LIST */
 #product-shop{
     padding-top: 150px;
     padding-bottom: 100px;
@@ -134,6 +228,18 @@ html, body {
 }
 
 
+
+
+/* LOGIN */
+
+
+
+
+
+/* FOOTER */
+footer p{
+    font-size: 22px;
+}
 
 
 

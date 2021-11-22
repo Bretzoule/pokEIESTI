@@ -1,15 +1,5 @@
 @charset "UTF-8";
 
 a{
-text-decoration: none;	
-} 
-
-.btn-primary{
-	background-color: #00AEEF !important;
-	border-color: #00AEEF; 
-}
-
-.btn-primary:hover {
-    background-color: #004FA3 !important;
-    border-color: #004FA3;
+	text-decoration: none;
 }
