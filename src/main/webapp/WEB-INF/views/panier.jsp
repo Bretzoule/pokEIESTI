@@ -28,7 +28,7 @@
 						<th scope="col">Prix total</th>
 					</tr>
 				</thead>
-				<c:forEach var="user" items="${}">
+				<c:forEach var="user" items="">
 					<tr>
 						<td scope="row"></td>
 						<td></td>

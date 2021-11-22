@@ -31,8 +31,10 @@
 	<header>
 		<jsp:include page="/WEB-INF/includes/navbar.jsp" />
 	</header>
-	<div id="page">
-		<div class="sideBlock1">
+	<div id="products">
+	<h1 class="text-center fw-bold pt-5">Nos produits</h1>
+	<hr class="my-5 w-25 d-block mx-auto" />
+		<!-- <div class="sideBlock1">
 			<div id="mySidepanel" class="myownsidepanel">
 				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
 				<div class="Filtres">
@@ -47,26 +49,22 @@
 				</div>
 
 			</div>
-		</div>
-		<div class='fondsidepanel'>
-			<button class="openbtn" onclick="openNav()">☰</button>
-		</div>
-		<div id="centerPanel">
+		</div> -->
+		<div class="container pt-3">
 			<c:forEach var="product" varStatus="loop" items="${productList}">
 				<c:if test="${loop.index%3 == 0}">
-					<section class="products">
+					<section class="row justify-content-between">
 				</c:if>
-				<div class="product-card">
-					<a href="product?id=${product.id}">
-						<div class="product-image">
-							<img src="${ product.picture }">
+				<div class="col-md-3 text-center">
+						<div>
+							<img style="max-height:300px;" class="img-fluid" src="${ product.picture }">
 						</div>
 						<div class="product-info">
 							<p>${product.name}</p>
 							<p>${product.price}</p>
 							<p class="stock">Stock : ${product.stock}</p>
 						</div>
-					</a>
+						<a href="product?id=${product.id}"><i class="bi bi-cart4"></i> Acheter</a>
 				</div>
 				<c:if test="${((loop.index+1)%3 == 0) && (loop.index != 0)}">
 					</section>
