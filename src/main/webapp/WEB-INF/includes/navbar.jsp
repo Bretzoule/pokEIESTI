@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
   <div class="container-fluid">
@@ -26,6 +28,12 @@
             <li><a class="dropdown-item" href="products?category=2">Nos figurines</a></li>
           </ul>
         </li>
+        <c:if test="${sessionScope.userConnecte}">
+	        <li class="nav-item">
+	          <a class="nav-link" href="panier">Votre panier</a>
+	        </li>
+        </c:if>
+        
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

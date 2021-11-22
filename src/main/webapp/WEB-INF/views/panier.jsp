@@ -40,9 +40,7 @@
 						<td></td>
 						<td>X</td>
 					</tr>
-				</c:forEach>
-
-			
+				</c:forEach>	
 			</table>
 		</div>
 	</div>
