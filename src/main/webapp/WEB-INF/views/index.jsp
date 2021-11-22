@@ -1,4 +1,5 @@
 <%@ page pageEncoding="UTF-8" %>
+<%@ page session="true"%>
 <!DOCTYPE html>
 <html>
 	<head>

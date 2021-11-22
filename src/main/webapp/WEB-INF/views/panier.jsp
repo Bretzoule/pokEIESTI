@@ -29,6 +29,7 @@
 						<th scope="col">Quantite</th>
 						<th scope="col">Prix unitaire</th>
 						<th scope="col">Prix total</th>
+						<th scope="col">Supprimer</th>
 					</tr>
 				</thead>
 				<c:forEach var="entry" items="${sessionScope.panier}">
@@ -37,6 +38,7 @@
 						<td><c:out value="${entry.value}"/></td>
 						<td></td>
 						<td></td>
+						<td>X</td>
 					</tr>
 				</c:forEach>
 
