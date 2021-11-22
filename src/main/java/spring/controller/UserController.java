@@ -1,19 +1,17 @@
 package spring.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import spring.model.Role;
@@ -55,10 +53,7 @@ public class UserController {
 	}
 	
 	@PostMapping("/login")
-	public String loginUser(@RequestParam("email") String email, @RequestParam("password") String password, Model model) {
-		
-		// regarder comment passer un paramètre a une page 
-		// et passer un paramètre connectee
+	public String loginUser(@RequestParam("email") String email, @RequestParam("password") String password,HttpServletRequest request, Model model) {
 		if(existUser(email)) {
 			User user = new User();
 			user = userService.getUser(email);
@@ -67,6 +62,8 @@ public class UserController {
 			if( BCrypt.checkpw(password, pw_hash) ) {
 			    System.out.println("mot de passe OK");
 			    model.addAttribute("erreurMdp", Boolean.FALSE);
+			    request.getSession().setAttribute("userConnecte", true);
+			    request.getSession().setAttribute("idUser", email);
 			    return "redirect:/";
 			}else {
 			    System.out.println("Mauvais mdp");
@@ -78,15 +75,8 @@ public class UserController {
 			model.addAttribute("erreurNoUser", Boolean.TRUE);
 			return "/login";
 		}
-		// sinon, rediriger sur la page de connexion et 
-		// lever un drapeau erreur
 	}
-	
-//	@GetMapping("/users/{email}/details")
-//	public String getUser(@PathVariable String email, Model model) {
-//		model.addAttribute("user",userService.getUser(email));
-//		return "users2";
-//	}
+
 
 	@GetMapping("/users")
 	public String getAllUsers(Model model) {

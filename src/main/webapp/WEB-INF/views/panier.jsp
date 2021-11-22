@@ -1,5 +1,8 @@
+<%@ page session="true"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,18 +29,18 @@
 						<th scope="col">Quantite</th>
 						<th scope="col">Prix unitaire</th>
 						<th scope="col">Prix total</th>
+						<th scope="col">Supprimer</th>
 					</tr>
 				</thead>
-				<c:forEach var="user" items="">
+				<c:forEach var="entry" items="${sessionScope.panier}">
 					<tr>
-						<td scope="row"></td>
+						<td scope="row"><c:out value="${entry.key}"/></td>
+						<td><c:out value="${entry.value}"/></td>
 						<td></td>
 						<td></td>
-						<td></td>
+						<td>X</td>
 					</tr>
-				</c:forEach>
-			
-			
+				</c:forEach>	
 			</table>
 		</div>
 	</div>

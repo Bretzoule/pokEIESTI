@@ -1,5 +1,5 @@
 <%@ page pageEncoding="UTF-8"%>
-<%@ page session="false"%>
+<%@ page session="true"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -45,6 +45,12 @@
                     <hr>
                     <p class="description">${ product.description }</p>
                     <h2><span class="fw-bold text-primary">${ product.price }€</span> <del>109.99€</del></h2>
+                    <form action="testPanier" method='post'>
+                    	 <input type="number" class="d-none" value=${ product.id } name="productid"/>
+                    	 <input type="number" class="d-none" value="1" name="quantite"/>
+                    	 <input type="text" class="d-none" value="add" name="action"/>
+                    	<input class="btn btn-primary btn-lg d-block m-auto my-5" id="connexion" value="Ajouter au panier" type="submit">
+                    </form>
                     <a type="button" class="btn btn-primary btn-lg d-block m-auto my-5"><i class="bi bi-cart"></i> Ajouter au panier</a>
                     <p class="hurry">Vite ! Il reste seulement <span class="text-danger fw-bold">${ product.stock } exemplaires</span> de cet article.</p>
                 </div>

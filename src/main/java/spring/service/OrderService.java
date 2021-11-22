@@ -9,6 +9,7 @@ public interface OrderService {
 	Order getOrder(long order_id);
 	void update(Order order);
 	void delete(long order_id);
+	public void confirmOrder(long order_id);
 
 	List<Order> getAllOrders();
 

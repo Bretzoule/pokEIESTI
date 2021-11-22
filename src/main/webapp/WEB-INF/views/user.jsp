@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page session="true"%>
 <html>
 <body onload='document.loginForm.username.focus();'>
 	<h1>Spring Security 5 - Login Form</h1>
