@@ -75,6 +75,7 @@ public class UserController {
 				model.addAttribute("erreurMdp", Boolean.FALSE);
 				request.getSession().setAttribute("userConnecte", true);
 				request.getSession().setAttribute("idUser", email);
+				request.getSession().setAttribute("userRole", user.getRole());
 				return "redirect:/";
 			} else {
 				System.out.println("Mauvais mdp");
