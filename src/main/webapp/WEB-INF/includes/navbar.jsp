@@ -3,7 +3,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<div class="container d-flex justify-content-between">
 		<div>
-			<a class="navbar-brand" href="#"><img
+			<a class="navbar-brand" href="/pokeisti"><img
 				style="width: 130px; margin-right: 20px;" id="logoTopDroit"
 				src="./assets/PokEISTIWithText.png" alt="logo"></a>
 			<button class="navbar-toggler" type="button"
@@ -33,6 +33,8 @@
 								cartes</a></li>
 						<li><a class="dropdown-item" href="products?category=3">Nos
 								coffrets</a></li>
+						<li><a class="dropdown-item" href="products?category=2">Nos
+								figurines</a></li>
 					</ul> 
 					<%-- <c:if test="${sessionScope.userConnecte==false}"> --%>
 						<li class="nav-item"><a class="nav-link" href="login">Se

@@ -36,6 +36,7 @@ public class ProductController {
 	public String indexCategory(@RequestParam(name = "category", required = false) Integer categoryType, Model model) {
 		if ((categoryType != null) && (categoryType.intValue() < 4) && categoryType.intValue() >= 0) {
 			model.addAttribute("productList", productService.listByType(Type.values()[categoryType.intValue()]));
+			model.addAttribute("category", Type.values()[categoryType.intValue()]);
 		} else {
 			model.addAttribute("productList", productService.list());
 		}
