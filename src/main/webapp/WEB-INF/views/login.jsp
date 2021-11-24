@@ -51,10 +51,7 @@
 					<a class="text-white btn btn-primary btn-lg d-block" href="register">Inscrivez vous ici</a>
 					
 				</div>
-			<!-- </main> -->
-		</div>
-	</div>
-		<c:if test="${erreurUser}">
+				<c:if test="${erreurUser}">
 			<div class="alert alert-warning float alert-dismissible position-absolute myAlert">
 				<strong>Erreur !</strong> L'email est deja prise <a href="#" class="closebtn" data-dismiss="alert">×</a>
 			</div>
@@ -69,5 +66,9 @@
 				<strong>Erreur !</strong> Aucun utilisteur enregistré avec cet email <a href="#" class="closebtn" data-dismiss="alert">×</a>
 			</div>
 		</c:if> 
+			<!-- </main> -->
+		</div>
+	</div>
+		
 	</body>  
 </html>  
