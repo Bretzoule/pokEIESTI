@@ -40,7 +40,7 @@
 							<div class="text-center mt-5">
 								<a href="#collection"
 									class="btn btn-lg btn-outline-primary me-3 px-5">Découvrir</a>
-								<a href="#" class="btn btn-lg btn-primary ms-3 px-5"><i
+								<a href="products" class="btn btn-lg btn-primary ms-3 px-5"><i
 									class="bi bi-cart3"></i> Acheter</a>
 							</div>
 					</div>
@@ -110,6 +110,7 @@
 					<div class="col-md-3 review-card text-center py-3">
 						<img src="./assets/lagamerde.jpg" class="rounded-circle my-3" />
 						<h3>Alexandre Lagamerde</h3>
+						<hr class="w-50 d-block mx-auto my-3" />
 						<p>M'en branle de Pokémon je voulais juste aller drill au
 							skatepark de base wsh</p>
 						<p class="stars">
@@ -121,6 +122,7 @@
 					<div class="col-md-3 review-card text-center py-3">
 						<img src="./assets/aurelien.jpg" class="rounded-circle my-3" />
 						<h3>Aurélien Monteillet</h3>
+						<hr class="w-50 d-block mx-auto my-3" />
 						<p>Je suis entièrement satisfait des boosters achetés sur
 							PokEISTI, qui m'ont permis de gagner plus du triple de ce que
 							j'avais investi.</p>
@@ -133,6 +135,7 @@
 					<div class="col-md-3 review-card text-center py-3">
 						<img src="./assets/couillet.jpg" class="rounded-circle my-3" />
 						<h3>Couillet</h3>
+						<hr class="w-50 d-block mx-auto my-3" />
 						<p>J'ai investi dans les cartes pokémon de PokEISTI et je ne
 							le regrette pas même si la rentabilité de 380% n'a pas été
 							atteinte.</p>

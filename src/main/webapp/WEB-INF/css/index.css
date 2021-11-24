@@ -1,36 +1,9 @@
 @charset "ISO-8859-1";
 
-
-
-
-/* COLOR VARIABLES */
-:root {
-  --primary: #00AEEF;
-  --dark-primary: #004FA3;
-  --white: #fff;
-}
-
-
-
-
 /* BOOSTRAP OVERRIDE */
 .btn-outline-light:hover{
     color:#0d6efd !important;
 }
-/* .btn-primary,
-.btn-primary:focus,
-.btn-primary:active {
-    color: var(--white);
-    background-color: var(--primary);
-    border-color: var(--primary);
-    box-shadow: none;
-}
-
-.btn-primary:hover {
-    color: var(--dark-primary);
-    background-color: transparent;
-    border: none;
-} */
 
 
 
@@ -44,11 +17,6 @@ html, body {
 a{
 	text-decoration: none;
 }
-
-
-
-
-/* NAVBAR */
 
 
 
@@ -217,14 +185,40 @@ a{
 }
 
 
-/* PRODUCT LIST */
+
+
+/* PRODUCTS */
+#products section{
+	padding: 70px 0px;
+}
+
+#products img{
+	max-height:300px;
+}
+
+#products h1{
+	font-size: 60px;
+	font-weight: 800;
+	text-transform: uppercase;
+}
+
+#products h4{
+	font-size: 28px;
+}
+
+
+
+
+
+/* SINGLE PRODUCT */
 #product-shop{
-    padding-top: 150px;
+    padding-top: 110px;
     padding-bottom: 100px;
 }
 
 #product-shop h1{
     font-size: 60px;
+    line-height: 53px;
 }
 
 
