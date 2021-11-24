@@ -49,7 +49,7 @@
 					<p class="description">${ product.description }</p>
 					<h2>
 						<span class="fw-bold text-primary">${ product.price }€</span>
-						<del>${ product.price * 1.1 }€ </del>
+						<del><fmt:formatNumber type="number" maxFractionDigits="2" value="${ product.price * 1.1 }"/>€</del>
 					</h2>
 					<form action="testPanier" method='post'>
 						<input type="number" class="d-none" value=${ product.id }

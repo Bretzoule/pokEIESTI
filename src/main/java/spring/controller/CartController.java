@@ -45,7 +45,6 @@ public class CartController {
 
 			} else if (action.equals("delete")) {
 				quantiteI = panier.get(productid);
-				System.out.println(quantiteI);
 				if (quantiteI < 2) {
 					panier.remove(productid);
 				} else {
@@ -62,13 +61,16 @@ public class CartController {
 	public String goToCart(HttpServletRequest request, Model model) {
 		Object tmpPanier = request.getSession().getAttribute("panier");
 		HashMap<Integer, Integer> panier;
+		double prixtotal = 0;
 		if ((tmpPanier != null) && (tmpPanier instanceof HashMap<?, ?>)) {
 			panier = (HashMap<Integer, Integer>) tmpPanier;
 			List<CartElement> elementPanier = new ArrayList<>();
 			for (int key : panier.keySet()) {
 				elementPanier.add(new CartElement(productService.getProduct(key), panier.get(key)));
+				prixtotal += productService.getProduct(key).getPrice() * panier.get(key);
 			}
 			model.addAttribute("elementPanier", elementPanier);
+			model.addAttribute("prixtotal", prixtotal);
 		}
 
 		return "panier";

@@ -1,4 +1,4 @@
-<%@ page pageEncoding="UTF-8" %>
+<%@ page pageEncoding="UTF-8"%>
 <%@ page session="true"%>
 <!DOCTYPE html>
 <html>
@@ -16,7 +16,8 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 <link rel="stylesheet" href="css/index.css">
 <title>PokEISTI</title>
 </head>
@@ -34,15 +35,14 @@
 						<img src="./assets/PokEISTIWithText.png" class="img-fluid" />
 					</div>
 					<div class="col-md-7 order-md-1">
-						<h2 class="text-uppercase text-primary">
-							Trading card game</h2>
-							<h1>La référence de l'achat de cartes Pokémon</h1>
-							<div class="text-center mt-5">
-								<a href="#collection"
-									class="btn btn-lg btn-outline-primary me-3 px-5">Découvrir</a>
-								<a href="products" class="btn btn-lg btn-primary ms-3 px-5"><i
-									class="bi bi-cart3"></i> Acheter</a>
-							</div>
+						<h2 class="text-uppercase text-primary">Trading card game</h2>
+						<h1>La référence de l'achat de cartes Pokémon</h1>
+						<div class="text-center mt-5">
+							<a href="#collection"
+								class="btn btn-lg btn-outline-primary me-3 px-5">Découvrir</a> <a
+								href="products" class="btn btn-lg btn-primary ms-3 px-5"><i
+								class="bi bi-cart3"></i> Acheter</a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -54,15 +54,63 @@
 					Une <span class="text-primary">collection</span> hors du commun...
 				</h1>
 				<hr class="w-25 d-block mx-auto my-5">
-				<div class="row align-items-center pt-5">
+				<div class="row align-items-center pt-5 justify-content-around">
 					<div class="col-md-5">
 						<p>Sélectionnez vos produits préférés parmi nos nombreuses
 							cartes, sans oublier de passer par nos boosters, figurines et
 							coffrets. Avec un peu de chances, vous pouvez même tomber sur un
 							de nos inédits!</p>
 					</div>
-					<div class="col-md-7">
-						<section id="page">
+					<div class="col-md-5">
+						<div id="carouselExampleIndicators" class="carousel slide carousel-dark"
+							data-bs-ride="carousel">
+							<div class="carousel-indicators">
+								<button type="button"
+									data-bs-target="#carouselExampleIndicators"
+									data-bs-slide-to="0" class="active" aria-current="true"
+									aria-label="Slide 1"></button>
+								<button type="button"
+									data-bs-target="#carouselExampleIndicators"
+									data-bs-slide-to="1" aria-label="Slide 2"></button>
+								<button type="button"
+									data-bs-target="#carouselExampleIndicators"
+									data-bs-slide-to="2" aria-label="Slide 3"></button>
+								<button type="button"
+									data-bs-target="#carouselExampleIndicators"
+									data-bs-slide-to="3" aria-label="Slide 4"></button>
+								<button type="button"
+									data-bs-target="#carouselExampleIndicators"
+									data-bs-slide-to="4" aria-label="Slide 5"></button>
+							</div>
+							<div class="carousel-inner">
+								<div class="carousel-item active">
+									<img src="./assets/evoli-figurine.jpg" class="d-block w-100" alt="...">
+								</div>
+								<div class="carousel-item">
+									<img src="./assets/pokemon-25ans.jpg" class="d-block w-100" alt="...">
+								</div>
+								<div class="carousel-item">
+									<img src="./assets/pokemon-booster.jpg" class="d-block w-100" alt="...">
+								</div>
+								<div class="carousel-item">
+									<img src="./assets/pokemon-coffret.jpg" class="d-block w-100" alt="...">
+								</div>
+								<div class="carousel-item">
+									<img src="./assets/pokemon-unite.jpg" class="d-block w-100" alt="...">
+								</div>
+							</div>
+							<button class="carousel-control-prev" type="button"
+								data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+								<span class="visually-hidden">Previous</span>
+							</button>
+							<button class="carousel-control-next" type="button"
+								data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+								<span class="carousel-control-next-icon" aria-hidden="true"></span>
+								<span class="visually-hidden">Next</span>
+							</button>
+						</div>
+						<!-- <section id="page">
 							<div id="centerPanel">
 								<section id="slider">
 									<input type="radio" name="slider" id="s1" checked> <input
@@ -93,7 +141,7 @@
 									</label>
 								</section>
 							</div>
-						</section>
+						</section> -->
 					</div>
 				</div>
 			</div>
