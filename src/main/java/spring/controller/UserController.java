@@ -1,5 +1,9 @@
 package spring.controller;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -14,9 +18,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
+import spring.model.Product;
 import spring.model.Role;
+import spring.model.Type;
 import spring.model.User;
 import spring.service.UserService;
 
@@ -30,22 +37,23 @@ public class UserController {
 	public String reachLoginPage() {
 		return "login";
 	}
-	
+
 	public boolean existUser(String email) {
-		return(userService.getUser(email)!=null);
+		return (userService.getUser(email) != null);
 	}
-	
+
 	@PostMapping("/add")
-	public String saveUser(@RequestParam("email") String email, @RequestParam("password") String password, Model model) {
+	public String saveUser(@RequestParam("email") String email, @RequestParam("password") String password,
+			Model model) {
 		System.out.println(Role.values());
-		if(existUser(email)) {
+		if (existUser(email)) {
 			System.out.println("utilisateur existant");
 			model.addAttribute("erreurUser", Boolean.TRUE);
 		} else {
 			model.addAttribute("erreurUser", Boolean.FALSE);
 			User user = new User();
 			String passwordHash;
-			passwordHash = BCrypt.hashpw(password,BCrypt.gensalt());
+			passwordHash = BCrypt.hashpw(password, BCrypt.gensalt());
 			user.setEmail(email);
 			user.setPassword(passwordHash);
 			user.setRole(Role.USER);
@@ -53,24 +61,25 @@ public class UserController {
 		}
 		return "/login";
 	}
-	
+
 	@PostMapping("/login")
-	public String loginUser(@RequestParam("email") String email, @RequestParam("password") String password,HttpServletRequest request, Model model) {
-		if(existUser(email)) {
+	public String loginUser(@RequestParam("email") String email, @RequestParam("password") String password,
+			HttpServletRequest request, Model model) {
+		if (existUser(email)) {
 			User user = new User();
 			user = userService.getUser(email);
 			String pw_hash = user.getPassword();
 			model.addAttribute("erreurNoUser", Boolean.FALSE);
-			if( BCrypt.checkpw(password, pw_hash) ) {
-			    System.out.println("mot de passe OK");
-			    model.addAttribute("erreurMdp", Boolean.FALSE);
-			    request.getSession().setAttribute("userConnecte", true);
-			    request.getSession().setAttribute("idUser", email);
-			    return "redirect:/";
-			}else {
-			    System.out.println("Mauvais mdp");
-			    model.addAttribute("erreurMdp", Boolean.TRUE);
-			    return "/login";
+			if (BCrypt.checkpw(password, pw_hash)) {
+				System.out.println("mot de passe OK");
+				model.addAttribute("erreurMdp", Boolean.FALSE);
+				request.getSession().setAttribute("userConnecte", true);
+				request.getSession().setAttribute("idUser", email);
+				return "redirect:/";
+			} else {
+				System.out.println("Mauvais mdp");
+				model.addAttribute("erreurMdp", Boolean.TRUE);
+				return "/login";
 			}
 		} else {
 			System.out.println("Utilisateur n'existe pas");
@@ -78,7 +87,6 @@ public class UserController {
 			return "/login";
 		}
 	}
-
 
 	@GetMapping("/users")
 	public String getAllUsers(Model model) {
@@ -90,6 +98,30 @@ public class UserController {
 	public String delete(@PathVariable("email") String email) {
 		userService.delete(email);
 		return "redirect:/users";
+	}
+
+	@GetMapping("/userEdit/{email:.+}")
+	public String reachEditProduct(@PathVariable("email") String email, Model model) {
+		model.addAttribute("role", Role.values());
+		model.addAttribute("user", userService.getUser(email));
+		return ("editUser");
+	}
+
+	@PostMapping("/userEdit/{email:.+}/edit")
+	public String editUser(@PathVariable("email") String email, @ModelAttribute("user") @Valid User user,
+			BindingResult result, RedirectAttributes attr, Model model) {
+		if (result.hasErrors()) {
+			return ("redirect:/userEdit/" + email);
+		} else {
+			try {
+				userService.update(user);
+				attr.addFlashAttribute("success", Boolean.TRUE);
+			} catch (Exception e) {
+				System.out.println(e);
+				attr.addFlashAttribute("error", Boolean.TRUE);
+			}
+			return ("redirect:/users");
+		}
 	}
 
 	@PostMapping("/addUser")
@@ -104,7 +136,7 @@ public class UserController {
 		userService.save(user);
 		return "redirect:/listUsers";
 	}
-	
+
 	@GetMapping("/logout")
 	public String logOut(HttpServletRequest request) {
 		HttpSession session = request.getSession(true);

@@ -25,15 +25,14 @@ public class UserServiceImp implements UserService {
 		return userDao.list();
 	}
 
-	public boolean testPassword(User user) {
-		// Tester le pattern du password : EXP commence par MAJ
-		return false;
-
-	}
-
 	@Transactional
 	public void delete(String email) {
 		userDao.delete(email);
+	}
+	
+	@Transactional
+	public void update(User user) {
+		userDao.update(user);
 	}
 
 	@Override

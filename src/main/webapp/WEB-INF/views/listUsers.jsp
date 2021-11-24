@@ -54,7 +54,7 @@
 										<td class="text-nowrap align-middle">${user.email}</td>
 										<td class="text-nowrap align-middle">${user.role}</td>
 										<td class="text-center align-middle"><a
-											class="btn btn-primary" href="#"><i
+											class="btn btn-primary" href="userEdit/${user.email}"><i
 												class="bi bi-pencil-fill"></i> Modifier</a> <a
 											class="btn btn-danger" href="usersDelete/${user.email}"><i
 												class="bi bi-trash-fill"></i> Supprimer</a></td>
