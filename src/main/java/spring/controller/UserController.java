@@ -37,6 +37,21 @@ public class UserController {
 	public String reachLoginPage() {
 		return "login";
 	}
+	
+	@GetMapping("/403")
+	public String reach403Page() {
+		return "403";
+	}
+	
+	@GetMapping("/404")
+	public String reach404Page() {
+		return "404";
+	}
+	
+	@GetMapping("/admin")
+	public String reachAdminPage() {
+		return "admin";
+	}
 
 	public boolean existUser(String email) {
 		return (userService.getUser(email) != null);
@@ -72,11 +87,11 @@ public class UserController {
 			String pw_hash = user.getPassword();
 			model.addAttribute("erreurNoUser", Boolean.FALSE);
 			if (BCrypt.checkpw(password, pw_hash)) {
-				System.out.println("mot de passe OK");
 				model.addAttribute("erreurMdp", Boolean.FALSE);
 				request.getSession().setAttribute("userConnecte", true);
 				request.getSession().setAttribute("idUser", email);
 				request.getSession().setAttribute("userRole", user.getRole());
+				System.out.println(user.getRole());
 				return "redirect:/";
 			} else {
 				System.out.println("Mauvais mdp");

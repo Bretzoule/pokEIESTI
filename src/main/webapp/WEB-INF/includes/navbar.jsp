@@ -19,7 +19,7 @@
 			<ul class="navbar-nav me-3 mb-2 mb-lg-0 text-uppercase">
 				<li class="nav-item me-3"><a class="nav-link active"
 					aria-current="page" href="/pokeisti">Accueil</a></li>
-				<li class="nav-item dropdown me-2"><a
+				<li class="nav-item dropdown me-3"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-bs-toggle="dropdown" aria-expanded="false">
 						Boutique </a>
@@ -36,14 +36,19 @@
 						<li><a class="dropdown-item" href="products?category=2">Nos
 								figurines</a></li>
 					</ul> 
-					<%-- <c:if test="${sessionScope.userConnecte==false}"> --%>
-						<li class="nav-item"><a class="nav-link" href="login">Se
+					<c:if test="${!sessionScope.userConnecte}">
+						<li class="nav-item me-3"><a class="nav-link" href="login">Se
 								connecter</a></li>
-					<%-- </c:if>  --%><c:if test="${sessionScope.userConnecte}">
-						<li class="nav-item"><a class="nav-link" href="panier">Votre
+					</c:if> 
+					<c:if test="${sessionScope.userConnecte}">
+						<li class="nav-item me-3"><a class="nav-link" href="panier">Votre
 								panier</a></li>
-					</c:if> <c:if test="${sessionScope.userConnecte}">
-						<li class="nav-item"><a class="nav-link text-danger" href="logout">Se
+					</c:if> 
+					<c:if test="${sessionScope.userRole == 'ADMIN'}">
+						<li class="nav-item me-3"><a class="nav-link" href="admin">Panel Admin</a></li>
+					</c:if>
+					<c:if test="${sessionScope.userConnecte}">
+						<li class="nav-item me-3"><a class="nav-link text-danger" href="logout">Se
 								deconnecter</a></li>
 					</c:if>
 				</li>
