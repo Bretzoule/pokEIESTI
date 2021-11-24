@@ -17,4 +17,9 @@ public class MainController {
         return ("register");
     }
     
+    @GetMapping("403error")
+    public String error403() {
+    	return("403error");
+    }
+    
 }

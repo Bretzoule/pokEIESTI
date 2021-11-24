@@ -45,6 +45,7 @@ public class UserController {
 	@PostMapping("/add")
 	public String saveUser(@RequestParam("email") String email, @RequestParam("password") String password,
 			Model model) {
+
 		System.out.println(Role.values());
 		if (existUser(email)) {
 			System.out.println("utilisateur existant");
@@ -90,52 +91,71 @@ public class UserController {
 	}
 
 	@GetMapping("/users")
-	public String getAllUsers(Model model) {
-		model.addAttribute("userList", userService.list());
-		return "listUsers";
+	public String getAllUsers(Model model, HttpServletRequest request) {
+		if (request.getSession(false).getAttribute("userRole") == Role.ADMIN) {
+			model.addAttribute("userList", userService.list());
+			return "listUsers";
+		} else {
+			return "403error";
+		}
 	}
 
 	@GetMapping("/usersDelete/{email:.+}")
-	public String delete(@PathVariable("email") String email) {
-		userService.delete(email);
-		return "redirect:/users";
+	public String delete(@PathVariable("email") String email, HttpServletRequest request) {
+		if (request.getSession(false).getAttribute("userRole") == Role.ADMIN) {
+			userService.delete(email);
+			return "redirect:/users";
+		} else {
+			return "403error";
+		}
 	}
 
 	@GetMapping("/userEdit/{email:.+}")
-	public String reachEditProduct(@PathVariable("email") String email, Model model) {
-		model.addAttribute("role", Role.values());
-		model.addAttribute("user", userService.getUser(email));
-		return ("editUser");
+	public String reachEditProduct(@PathVariable("email") String email, Model model, HttpServletRequest request) {
+		if (request.getSession(false).getAttribute("userRole") == Role.ADMIN) {
+			model.addAttribute("role", Role.values());
+			model.addAttribute("user", userService.getUser(email));
+			return ("editUser");
+		} else {
+			return "403error";
+		}
 	}
 
 	@PostMapping("/userEdit/{email:.+}/edit")
 	public String editUser(@PathVariable("email") String email, @ModelAttribute("user") @Valid User user,
-			BindingResult result, RedirectAttributes attr, Model model) {
-		if (result.hasErrors()) {
-			return ("redirect:/userEdit/" + email);
-		} else {
-			try {
-				userService.update(user);
-				attr.addFlashAttribute("success", Boolean.TRUE);
-			} catch (Exception e) {
-				System.out.println(e);
-				attr.addFlashAttribute("error", Boolean.TRUE);
+			BindingResult result, RedirectAttributes attr, Model model, HttpServletRequest request) {
+		if (request.getSession(false).getAttribute("userRole") == Role.ADMIN) {
+			if (result.hasErrors()) {
+				return ("redirect:/userEdit/" + email);
+			} else {
+				try {
+					userService.update(user);
+					attr.addFlashAttribute("success", Boolean.TRUE);
+				} catch (Exception e) {
+					System.out.println(e);
+					attr.addFlashAttribute("error", Boolean.TRUE);
+				}
+				return ("redirect:/users");
 			}
-			return ("redirect:/users");
+		} else {
+			return "403error";
 		}
 	}
 
 	@PostMapping("/addUser")
-	public String saveUser(@ModelAttribute("user") @Valid User user, BindingResult result, Model model) {
+	public String saveUser(@ModelAttribute("user") @Valid User user, BindingResult result, Model model, HttpServletRequest request) {
+		if (request.getSession(false).getAttribute("userRole") == Role.ADMIN) {
+			if (result.hasErrors()) {
+				System.out.println("Erreurs");
+				model.addAttribute("users", userService.list());
+				return "register";
+			}
 
-		if (result.hasErrors()) {
-			System.out.println("Erreurs");
-			model.addAttribute("users", userService.list());
-			return "register";
+			userService.save(user);
+			return "redirect:/listUsers";
+		} else {
+			return "403error";
 		}
-
-		userService.save(user);
-		return "redirect:/listUsers";
 	}
 
 	@GetMapping("/logout")
