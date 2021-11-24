@@ -13,10 +13,14 @@
 	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
+<<<<<<< HEAD
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
+=======
+
+>>>>>>> 1bf3a579622c6a48587086148856d7d3254f8829
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 <link rel="stylesheet" href="css/login.css">
@@ -29,6 +33,7 @@
 	<div class="container my-5">
 		<div class="row d-flex justify-content-md-center">
 			<h1 class='py-5'>Mon panier</h1>
+
 
 			<table class="table">
 				<thead>
@@ -47,16 +52,33 @@
 						<td><c:out value="${entities.product.price}" /></td>
 						<td><c:out
 								value="${entities.product.price*entities.quantity}" /></td>
+<<<<<<< HEAD
 						<td><a href='/#' class='btn btn-danger'> <i
 								class="bi bi-trash-fill"></i> Supprimer
 						</a></td>
+=======
+						<td>
+							<form action="testPanier" method='post'>
+								<input type="number" class="d-none" value=${ entities.product.id }
+									name="productid" /> <input type="number" class="d-none"
+									value="1" name="quantite" /> <input type="text" class="d-none"
+									value="delete" name="action" /> <a href="javascript:{}"
+									onclick="document.querySelector('form').submit();"
+									type="button" class='btn btn-danger'><i
+									class="bi bi-trash-fill"></i> Supprimer</a>
+							</form>
+						</td>
+>>>>>>> 1bf3a579622c6a48587086148856d7d3254f8829
 					</tr>
 				</c:forEach>
 			</table>
 		</div>
-		<br>
-		<button class="text-white btn btn-primary btn-lg d-block mx-auto"
-			type="button">Confirmer la commande</button>
+		<div class="d-flex justify-content-center align-items-center pt-4">
+			<a class="me-3 btn btn-lg btn-outline-primary" href="products"><i
+				class="bi bi-arrow-left"></i> Continuer mes achats</a> <a
+				class="text-white btn btn-primary btn-lg" type="button">Confirmer
+				la commande</a>
+		</div>
 	</div>
 </body>
 </html>

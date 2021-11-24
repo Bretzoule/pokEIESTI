@@ -11,6 +11,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.OneToMany;
 
 @Entity
 @Table(name = "products")
@@ -31,11 +32,11 @@ public class Product {
 	private String description;
 
 	@Column(name = "price")
-	@Min(value = 0L, message = "Ce champ doit être positif.")
+	@Min(value = 0L, message = "Ce champ doit Ãªtre positif.")
 	private double price;
 
 	@Column(name = "stock")
-	@Min(value = 1, message = "Ce champ doit être supérieur à 0.")
+	@Min(value = 1, message = "Ce champ doit Ãªtre supÃ©rieur Ã  0.")
 	private int stock;
 
 	@Column(name = "picture")

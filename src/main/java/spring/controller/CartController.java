@@ -44,7 +44,13 @@ public class CartController {
 				}
 
 			} else if (action.equals("delete")) {
-				panier.remove(productid);
+				quantiteI = panier.get(productid);
+				System.out.println(quantiteI);
+				if (quantiteI < 2) {
+					panier.remove(productid);
+				} else {
+					panier.put(productid, quantiteI - 1);
+				}
 			}
 
 			request.getSession().setAttribute("panier", panier);
@@ -62,10 +68,9 @@ public class CartController {
 			for (int key : panier.keySet()) {
 				elementPanier.add(new CartElement(productService.getProduct(key), panier.get(key)));
 			}
-			model.addAttribute("elementPanier",elementPanier);
+			model.addAttribute("elementPanier", elementPanier);
 		}
 
 		return "panier";
 	}
 }
-
