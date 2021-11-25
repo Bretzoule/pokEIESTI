@@ -41,30 +41,41 @@
 					</tr>
 				</thead>
 				<tbody>
-				<c:forEach var="entities" items="${elementPanier}">
-					<tr>
-						<td scope="row"><c:out value="${entities.product.name}" /></td>
-						<td><c:out value="${entities.quantity}" /></td>
-						<td><c:out value="${entities.product.price}" /></td>
-						<td><c:out
-								value="${entities.product.price*entities.quantity}" /></td>
-						<td>
-							<form action="testPanier" method='post'>
-								<input type="number" class="d-none" value=${ entities.product.id }
-									name="productid" /> <input type="number" class="d-none"
-									value="1" name="quantite" /> <input type="text" class="d-none"
-									value="delete" name="action" /> <a href="javascript:{}"
-									onclick="document.querySelector('form').submit();"
-									type="button" class='btn btn-danger'><i
-									class="bi bi-trash-fill"></i> Supprimer</a>
-							</form>
-						</td>
-					</tr>
-				</c:forEach>
+					<c:forEach var="entities" items="${elementPanier}">
+						<tr>
+							<td scope="row"><c:out value="${entities.product.name}" /></td>
+							<td><c:out value="${entities.quantity}" /></td>
+							<td><c:out value="${entities.product.price}" /></td>
+							<td><c:out
+									value="${entities.product.price*entities.quantity}" /></td>
+							<td>
+								<form action="testPanier" method='post'>
+									<input type="number" class="d-none"
+										value=${ entities.product.id } name="productid" /> <input
+										type="number" class="d-none" value="1" name="quantite" /> <input
+										type="text" class="d-none" value="delete" name="action" /> <a
+										href="javascript:{}"
+										onclick="document.querySelector('form').submit();"
+										type="button" class='btn btn-danger'><i
+										class="bi bi-trash-fill"></i> Supprimer</a>
+								</form>
+							</td>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>
-		<h2>Prix total de la commande : <fmt:formatNumber type="number" maxFractionDigits="2" value="${prixtotal}"/>€</h2>
+		<h2>
+			Prix total de la commande :
+			<fmt:formatNumber type="number" maxFractionDigits="2"
+				value="${prixtotal}" />
+			€
+		</h2>
+		<form action="confirmOrder" method="post">
+			<input type="number" class="d-none" value=${ sessionScope.idUser }
+				name="idUser" /> <input type="number" class="d-none"
+				value=${ prixtotal } name="prixtotal" />
+		</form>
 		<div class="d-flex justify-content-center align-items-center pt-4">
 			<a class="me-3 btn btn-lg btn-outline-primary" href="products"><i
 				class="bi bi-arrow-left"></i> Continuer mes achats</a> <a
