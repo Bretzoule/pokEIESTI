@@ -3,8 +3,11 @@ package spring.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -46,7 +49,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
 	@Override
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-		configurer.enable();
 	}
 
 	@Bean(name = "multipartResolver")
@@ -56,6 +58,14 @@ public class WebMvcConfig implements WebMvcConfigurer {
 		resover.setMaxUploadSize(10000000);
 
 		return resover;
+	}
+	
+	@ControllerAdvice
+	public class ControllerAdvisor {
+	     @ExceptionHandler(NoHandlerFoundException.class)
+	     public String handle(Exception ex) {
+	        return "redirect:404";//this is view name
+	    }
 	}
 
 }

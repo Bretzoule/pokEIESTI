@@ -110,20 +110,10 @@ VALUES (
 -- --------------------------------------------------------
 -- Déchargement des données de la table `users`
 --
-<<<<<<< HEAD
 
 INSERT INTO `users`(`email`,`password`,`role`) VALUES
-	('merdegarbure@cy-tech.fr','test','ADMIN'),
-	('alexmerde@cy-tech.fr','oui','USER'),
-	('lagamerde@cy-tech.fr','grdg','LISTENER'),
-	('merdexandre@cy-tech.fr','sdxvsrf','ADMIN'),
-	('alemerdexandre@cy-tech.fr','sdxvsrf','USER');
-=======
-INSERT INTO `users`(`email`, `password`, `role`)
-VALUES(
-        ('noamerdos@cy-tech.fr', 'test', 'ADMIN'),
-        ('leflomerdoch@cy-tech.fr', 'oui', 'USER'),
-        ('lagamerde@cy-tech.fr', 'grdg', 'LISTENER'),
-        ('dodomerdostick@cy-tech.fr', 'sdxvsrf', 'ADMIN')
-    )
->>>>>>> af08ba6488b8ba75c578c50d0a7d4152e3514a3c
+	('merdegarbure@cy-tech.fr','$2a$12$civK98HE.bxLrNK2aNjP0uY8uKzG9jZxLZPk0gO1b0zim0rv854IW','ADMIN'),
+	('alexmerde@cy-tech.fr','$2a$12$civK98HE.bxLrNK2aNjP0uY8uKzG9jZxLZPk0gO1b0zim0rv854IW','USER'),
+	('lagamerde@cy-tech.fr','$2a$12$civK98HE.bxLrNK2aNjP0uY8uKzG9jZxLZPk0gO1b0zim0rv854IW','LISTENER'),
+	('merdexandre@cy-tech.fr','$2a$12$civK98HE.bxLrNK2aNjP0uY8uKzG9jZxLZPk0gO1b0zim0rv854IW','ADMIN'),
+	('alemerdexandre@cy-tech.fr','$2a$12$civK98HE.bxLrNK2aNjP0uY8uKzG9jZxLZPk0gO1b0zim0rv854IW','USER');

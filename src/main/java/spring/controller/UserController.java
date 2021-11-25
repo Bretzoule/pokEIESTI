@@ -38,19 +38,13 @@ public class UserController {
 		return "login";
 	}
 	
-	@GetMapping("/403")
-	public String reach403Page() {
-		return "403";
-	}
-	
-	@GetMapping("/404")
-	public String reach404Page() {
-		return "404";
-	}
-	
 	@GetMapping("/admin")
-	public String reachAdminPage() {
+	public String reachAdminPage(HttpServletRequest request) {
+		if (request.getSession(false).getAttribute("userRole") == Role.ADMIN) {
 		return "admin";
+		} else {
+			return "redirect:403";
+		}
 	}
 
 	public boolean existUser(String email) {
@@ -111,7 +105,7 @@ public class UserController {
 			model.addAttribute("userList", userService.list());
 			return "listUsers";
 		} else {
-			return "403error";
+			return "redirect:403";
 		}
 	}
 
@@ -121,7 +115,7 @@ public class UserController {
 			userService.delete(email);
 			return "redirect:/users";
 		} else {
-			return "403error";
+			return "redirect:403";
 		}
 	}
 
@@ -132,7 +126,7 @@ public class UserController {
 			model.addAttribute("user", userService.getUser(email));
 			return ("editUser");
 		} else {
-			return "403error";
+			return "redirect:403";
 		}
 	}
 
@@ -153,7 +147,7 @@ public class UserController {
 				return ("redirect:/users");
 			}
 		} else {
-			return "403error";
+			return "redirect:403";
 		}
 	}
 
@@ -169,7 +163,7 @@ public class UserController {
 			userService.save(user);
 			return "redirect:/listUsers";
 		} else {
-			return "403error";
+			return "redirect:403";
 		}
 	}
 

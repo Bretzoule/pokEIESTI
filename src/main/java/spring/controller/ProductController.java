@@ -57,7 +57,7 @@ public class ProductController {
 			model.addAttribute("product", new Product());
 			return "addProduct";
 		} else {
-			return "403error";
+			return "redirect:403";
 		}
 
 	}
@@ -88,7 +88,7 @@ public class ProductController {
 				return ("redirect:/addProduct");
 			}
 		} else {
-			return "403error";
+			return "redirect:403";
 		}
 
 	}
@@ -99,7 +99,7 @@ public class ProductController {
 			model.addAttribute("productList", productService.list());
 			return ("listProducts");
 		} else {
-			return "403error";
+			return "redirect:403";
 		}
 	}
 
@@ -109,7 +109,7 @@ public class ProductController {
 			productService.delete(id);
 			return ("redirect:/listProducts");
 		} else {
-			return "403error";
+			return "redirect:403";
 		}
 	}
 
@@ -120,7 +120,7 @@ public class ProductController {
 			model.addAttribute("product", productService.getProduct(id));
 			return ("editProduct");
 		} else {
-			return "403error";
+			return "redirect:403";
 		}
 	}
 
@@ -154,7 +154,7 @@ public class ProductController {
 				return ("redirect:/listProducts");
 			}
 		} else {
-			return "403error";
+			return "redirect:403";
 		}
 	}
 }
