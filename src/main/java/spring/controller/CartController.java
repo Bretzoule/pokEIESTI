@@ -77,4 +77,25 @@ public class CartController {
 
 		return "panier";
 	}
+	
+	
+	@SuppressWarnings("unchecked")
+	@GetMapping("/validerCommande")
+	public String confirmOrder(HttpServletRequest request, Model model) {
+		Object tmpPanier = request.getSession().getAttribute("panier");
+		HashMap<Integer, Integer> panier;
+		if ((tmpPanier != null) && (tmpPanier instanceof HashMap<?, ?>)) {
+			panier = (HashMap<Integer, Integer>) tmpPanier;
+			List<CartElement> elementPanier = new ArrayList<>();
+			for (int key : panier.keySet()) {
+				elementPanier.add(new CartElement(productService.getProduct(key), panier.get(key)));
+			}
+			
+		} else {
+			model.addAttribute("message", "Votre panier est vide !");
+			return "panier";
+		}
+		model.addAttribute("message", "Votre commande a été confirmée.");
+		return "panier";
+	}
 }

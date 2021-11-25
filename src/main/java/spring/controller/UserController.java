@@ -78,7 +78,6 @@ public class UserController {
 				request.getSession().setAttribute("userConnecte", true);
 				request.getSession().setAttribute("idUser", email);
 				request.getSession().setAttribute("userRole", user.getRole());
-				System.out.println(user.getRole());
 				return "redirect:/";
 			} else {
 				System.out.println("Mauvais mdp");
