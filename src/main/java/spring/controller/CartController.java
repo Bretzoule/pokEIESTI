@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import spring.model.CartElement;
+import spring.model.Product;
 import spring.service.ProductService;
 
 @Controller
@@ -25,8 +27,7 @@ public class CartController {
 	@SuppressWarnings("unchecked")
 	@PostMapping("/testPanier")
 	public String testMestod(@RequestParam("action") String action, @RequestParam("productid") int productid,
-			@RequestParam("quantite") int quantite, HttpServletRequest request) {
-
+			@RequestParam("quantite") int quantite, HttpServletRequest request, Model model) {
 		Object tmpPanier = request.getSession().getAttribute("panier");
 		HashMap<Integer, Integer> panier;
 		int quantiteI;
@@ -39,7 +40,12 @@ public class CartController {
 			if (action.equals("add")) {
 				if (panier.containsKey(productid)) {
 					quantiteI = panier.get(productid);
-					panier.put(productid, quantiteI + quantite);
+					if(productService.getProduct(productid).getStock() > quantiteI) {
+						panier.put(productid, quantiteI + quantite);
+						request.getSession().setAttribute("qteInsuffisante", "");
+					} else {
+						request.getSession().setAttribute("qteInsuffisante", "La quantit� est insuffisante");
+					}
 				} else {
 					panier.put(productid, quantite);
 				}
@@ -78,24 +84,4 @@ public class CartController {
 		return "panier";
 	}
 	
-	
-	@SuppressWarnings("unchecked")
-	@GetMapping("/validerCommande")
-	public String confirmOrder(HttpServletRequest request, Model model) {
-		Object tmpPanier = request.getSession().getAttribute("panier");
-		HashMap<Integer, Integer> panier;
-		if ((tmpPanier != null) && (tmpPanier instanceof HashMap<?, ?>)) {
-			panier = (HashMap<Integer, Integer>) tmpPanier;
-			List<CartElement> elementPanier = new ArrayList<>();
-			for (int key : panier.keySet()) {
-				elementPanier.add(new CartElement(productService.getProduct(key), panier.get(key)));
-			}
-			
-		} else {
-			model.addAttribute("message", "Votre panier est vide !");
-			return "panier";
-		}
-		model.addAttribute("message", "Votre commande a été confirmée.");
-		return "panier";
-	}
 }

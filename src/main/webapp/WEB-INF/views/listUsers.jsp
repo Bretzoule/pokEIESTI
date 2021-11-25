@@ -69,8 +69,5 @@
 	</div>
 
 
-	<footer id="footerinner">
-		<jsp:include page="/WEB-INF/includes/footer.jsp" />
-	</footer>
 </body>
 </html>

@@ -1,15 +1,25 @@
 package spring.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import spring.model.CartElement;
 import spring.model.Order;
+import spring.model.Product;
+import spring.model.Type;
 import spring.service.OrderService;
+import spring.service.ProductService;
 import spring.service.UserService;
 
 @Controller
@@ -19,6 +29,9 @@ public class OrderController {
 	
 	@Autowired
 	private UserService userservice;
+	
+	@Autowired
+	private ProductService productService;
 
 	@GetMapping("/orders")
 	public String index() {
@@ -41,5 +54,37 @@ public class OrderController {
         
         return "redirect:validerCommande";
     }
+    
+    
+    @SuppressWarnings("unchecked")
+	@GetMapping("/validerCommande")
+	public String confirmOrder(HttpServletRequest request, Model model) {
+		Object tmpPanier = request.getSession().getAttribute("panier");
+		HashMap<Integer, Integer> panier;
+		if ((tmpPanier != null) && (tmpPanier instanceof HashMap<?, ?>)) {
+			panier = (HashMap<Integer, Integer>) tmpPanier;
+			List<CartElement> elementPanier = new ArrayList<>();
+			for (int key : panier.keySet()) {
+				Product product = productService.getProduct(key);
+				int qtePanier = panier.get(key);
+				int qteStock = product.getStock();
+				if (qtePanier <= qteStock) {
+					product.setStock(qteStock - qtePanier);
+					productService.update(product);
+				} else {
+					model.addAttribute("messageError", "L'un de vos articles n'est pas en quantité suffisante dans notre stock.");
+					return "panier";
+				}
+			}
+			panier.clear();
+			request.getSession().setAttribute("qteInsuffisante", "");
+			model.addAttribute("messageSuccess", "Merci de votre commande !");
+			return "panier";
+		} else {
+			model.addAttribute("messageError", "Votre panier est vide !");
+			return "panier";
+		}
+		
+	}
 
 }

@@ -38,7 +38,8 @@
 		<div class="container">
 			<div class="row">
 				<div class="col mb-3">
-					<h1 class="text-center py-4">Liste des produits</h1>
+					<h1 class="text-center py-5">Liste des produits</h1>
+					<a href="addProduct" class="btn btn-primary"><i class="bi bi-plus"></i> Ajouter un produit</a>
 					<div class="table-responsive table-lg mt-3">
 						<table class="table table-bordered">
 							<thead>
@@ -75,7 +76,7 @@
 	</div>
 
 
-	<footer id="footerinner">
+	<footer class="d-flex align-items-center bg-dark">
 		<jsp:include page="/WEB-INF/includes/footer.jsp" />
 	</footer>
 </body>

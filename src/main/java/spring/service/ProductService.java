@@ -17,5 +17,5 @@ public interface ProductService {
 	List<Product> listByType(Type type);
 	
 	void update(Product product);
-
+	
 }

@@ -71,7 +71,7 @@
 	</section>
 
 
-	<footer id="footerinner">
+	<footer class="d-flex align-items-center bg-dark">
 		<jsp:include page="/WEB-INF/includes/footer.jsp" />
 	</footer>
 </body>
