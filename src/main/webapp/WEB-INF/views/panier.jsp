@@ -29,7 +29,7 @@
 		<div class="row d-flex justify-content-md-center">
 			<h1 class='py-5'>Mon panier</h1>
 
-			<c:if test="${ sessionScope.qteInsuffisante != '' && sessionScope.qteInsuffisante != ''}">
+			<c:if test="${ sessionScope.qteInsuffisante != '' && sessionScope.qteInsuffisante != null}">
 				<div class="alert alert-danger">
 					<p><span class="fw-bold">Erreur !</span> ${ sessionScope.qteInsuffisante }</p>
 				</div>

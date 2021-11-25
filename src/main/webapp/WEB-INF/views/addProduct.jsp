@@ -20,8 +20,8 @@
 			<div class="col-md-6">
 				<form:form action="addProduct/add" method="post"
 					modelAttribute="product" enctype='multipart/form-data'>
-					<img style="width: 200px; margin-right: 20px;" class="m-5"
-						id="logoTopDroit" src="assets/PokEISTIWithText.png" alt="logo">
+						<a href="/pokeisti"> <img style="width: 200px; margin-right: 20px;" class="m-5" id="logoTopDroit" src="assets/PokEISTIWithText.png" alt="logo">
+						</a>
 					<h1 class="py-4">Ajouter un produit</h1>
 
 					<div class="form-floating m-2">

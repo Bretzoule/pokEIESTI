@@ -157,10 +157,10 @@
 				<div class="row justify-content-evenly pt-5">
 					<div class="col-md-3 review-card text-center py-3">
 						<img src="./assets/lagamerde.jpg" class="rounded-circle my-3" />
-						<h3>Alexandre Lagamerde</h3>
+						<h3>Alexandre Lagarbue</h3>
 						<hr class="w-50 d-block mx-auto my-3" />
-						<p>M'en branle de Pokémon je voulais juste aller drill au
-							skatepark de base wsh</p>
+						<p>Je suis moins intéressé par les Pokémon je préfère aller au
+							skatepark mais j'adore ce site.</p>
 						<p class="stars">
 							<i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
 								class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
@@ -182,7 +182,7 @@
 					</div>
 					<div class="col-md-3 review-card text-center py-3">
 						<img src="./assets/couillet.jpg" class="rounded-circle my-3" />
-						<h3>Couillet</h3>
+						<h3>Hugo Coeuillet</h3>
 						<hr class="w-50 d-block mx-auto my-3" />
 						<p>J'ai investi dans les cartes pokémon de PokEISTI et je ne
 							le regrette pas même si la rentabilité de 380% n'a pas été
