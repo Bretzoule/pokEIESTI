@@ -28,6 +28,17 @@ public class OrderController {
 	public String addOrder() {
 		return "addOrder";
 	}
+	
+    @PostMapping("confirmOrder")
+    public String confirmOrder(@RequestParam("idUser") String user_mail, @RequestParam("prixtotal") double prixtotal) {
+        Order order = new Order();
+        order.setUser(userservice.getUser(user_mail));
+        order.setTotal_price(prixtotal);
+        Date now = new Date();        
+        order.setDate( now );
+        orderservice.save(order);
+        return "redirect:/validerCommande";
+    }
 
 	@PostMapping("confirmOrder")
 	public String confirmOrder(@RequestParam("idUser") String user_mail, @RequestParam("prixtotal") double prixtotal) {
