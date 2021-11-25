@@ -11,7 +11,6 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.OneToMany;
 
 @Entity
 @Table(name = "products")
