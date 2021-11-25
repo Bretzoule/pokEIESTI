@@ -21,6 +21,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import spring.model.Product;
+import spring.model.Role;
 import spring.model.Type;
 import spring.service.ProductService;
 
@@ -50,83 +51,110 @@ public class ProductController {
 	}
 
 	@GetMapping("/addProduct")
-	public String reachAddProduct(Model model) {
-		model.addAttribute("type", Type.values());
-		model.addAttribute("product", new Product());
-		return "addProduct";
+	public String reachAddProduct(Model model, HttpServletRequest request) {
+		if (request.getSession(false).getAttribute("userRole") == Role.ADMIN) {
+			model.addAttribute("type", Type.values());
+			model.addAttribute("product", new Product());
+			return "addProduct";
+		} else {
+			return "redirect:403";
+		}
+
 	}
 
 	@PostMapping("/addProduct/add")
 	public String addProduct(@RequestParam("file") CommonsMultipartFile file,
 			@ModelAttribute("product") @Valid Product theProduct, BindingResult result, HttpServletRequest request,
 			Model model, RedirectAttributes attr) {
-		if (result.hasErrors()) {
-			return ("addProduct");
-		} else {
-			try {
-				String path = request.getServletContext().getRealPath("WEB-INF/" + UPLOAD_DIRECTORY);
-				String filename = file.getOriginalFilename();
-				byte barr[] = file.getBytes();
-				BufferedOutputStream bout = new BufferedOutputStream(new FileOutputStream(path + "/" + filename));
-				bout.write(barr);
-				bout.flush();
+		if (request.getSession(false).getAttribute("userRole") == Role.ADMIN) {
+			if (result.hasErrors()) {
+				return ("addProduct");
+			} else {
+				try {
+					String path = request.getServletContext().getRealPath("WEB-INF/" + UPLOAD_DIRECTORY);
+					String filename = file.getOriginalFilename();
+					byte barr[] = file.getBytes();
+					BufferedOutputStream bout = new BufferedOutputStream(new FileOutputStream(path + "/" + filename));
+					bout.write(barr);
+					bout.flush();
 
-				theProduct.setPicture(UPLOAD_DIRECTORY + '/' + filename);
-				productService.save(theProduct);
-				attr.addFlashAttribute("success", Boolean.TRUE);
+					theProduct.setPicture(UPLOAD_DIRECTORY + '/' + filename);
+					productService.save(theProduct);
+					attr.addFlashAttribute("success", Boolean.TRUE);
 
-			} catch (Exception e) {
-				attr.addFlashAttribute("error", Boolean.TRUE);
+				} catch (Exception e) {
+					attr.addFlashAttribute("error", Boolean.TRUE);
+				}
+				return ("redirect:/addProduct");
 			}
-			return ("redirect:/addProduct");
+		} else {
+			return "redirect:403";
 		}
+
 	}
 
 	@GetMapping("/listProducts")
-	public String listProductsAdmin(Model model) {
-		model.addAttribute("productList", productService.list());
-		return ("listProducts");
+	public String listProductsAdmin(Model model, HttpServletRequest request) {
+		if (request.getSession(false).getAttribute("userRole") == Role.ADMIN) {
+			model.addAttribute("productList", productService.list());
+			return ("listProducts");
+		} else {
+			return "redirect:403";
+		}
 	}
 
 	@GetMapping("/removeProduct/{id}")
-	public String removeProduct(@PathVariable("id") int id, Model model) {
-		productService.delete(id);
-		return ("redirect:/listProducts");
+	public String removeProduct(@PathVariable("id") int id, Model model, HttpServletRequest request) {
+		if (request.getSession(false).getAttribute("userRole") == Role.ADMIN) {
+			productService.delete(id);
+			return ("redirect:/listProducts");
+		} else {
+			return "redirect:403";
+		}
 	}
 
 	@GetMapping("/editProduct/{id}")
-	public String reachEditProduct(@PathVariable("id") int id, Model model) {
-		model.addAttribute("type", Type.values());
-		model.addAttribute("product", productService.getProduct(id));
-		return ("editProduct");
+	public String reachEditProduct(@PathVariable("id") int id, Model model, HttpServletRequest request) {
+		if (request.getSession(false).getAttribute("userRole") == Role.ADMIN) {
+			model.addAttribute("type", Type.values());
+			model.addAttribute("product", productService.getProduct(id));
+			return ("editProduct");
+		} else {
+			return "redirect:403";
+		}
 	}
 
 	@PostMapping("/editProduct/{id}/edit")
 	public String editProduct(@PathVariable("id") int id, @RequestParam("file") CommonsMultipartFile file,
 			@ModelAttribute("product") @Valid Product product, BindingResult result, HttpServletRequest request,
 			RedirectAttributes attr) {
-		if (result.hasErrors()) {
-			return ("redirect:/editProduct/" + id);
-		} else {
-			try {				
-				if (!file.isEmpty()) {
-					String path = request.getServletContext().getRealPath("WEB-INF/" + UPLOAD_DIRECTORY);
-					String filename = file.getOriginalFilename();
-					String pathB = request.getServletContext().getRealPath("WEB-INF/");
-					File fileToDelete = new File(pathB + product.getPicture());
-					byte barr[] = file.getBytes();
-					BufferedOutputStream bout = new BufferedOutputStream(new FileOutputStream(path + "/" + filename));
-					bout.write(barr);
-					bout.flush();
-					product.setPicture(UPLOAD_DIRECTORY + '/' + filename);
+		if (request.getSession(false).getAttribute("userRole") == Role.ADMIN) {
+			if (result.hasErrors()) {
+				return ("redirect:/editProduct/" + id);
+			} else {
+				try {
+					if (!file.isEmpty()) {
+						String path = request.getServletContext().getRealPath("WEB-INF/" + UPLOAD_DIRECTORY);
+						String filename = file.getOriginalFilename();
+						String pathB = request.getServletContext().getRealPath("WEB-INF/");
+						File fileToDelete = new File(pathB + product.getPicture());
+						byte barr[] = file.getBytes();
+						BufferedOutputStream bout = new BufferedOutputStream(
+								new FileOutputStream(path + "/" + filename));
+						bout.write(barr);
+						bout.flush();
+						product.setPicture(UPLOAD_DIRECTORY + '/' + filename);
+					}
+					productService.update(product);
+					attr.addFlashAttribute("success", Boolean.TRUE);
+				} catch (Exception e) {
+					System.out.println(e);
+					attr.addFlashAttribute("error", Boolean.TRUE);
 				}
-			productService.update(product);
-			attr.addFlashAttribute("success", Boolean.TRUE);
-			} catch (Exception e) {
-				System.out.println(e);
-				attr.addFlashAttribute("error", Boolean.TRUE);
+				return ("redirect:/listProducts");
 			}
-			return ("redirect:/listProducts");
+		} else {
+			return "redirect:403";
 		}
 	}
 }

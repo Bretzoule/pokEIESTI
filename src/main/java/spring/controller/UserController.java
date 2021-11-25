@@ -37,6 +37,15 @@ public class UserController {
 	public String reachLoginPage() {
 		return "login";
 	}
+	
+	@GetMapping("/admin")
+	public String reachAdminPage(HttpServletRequest request) {
+		if (request.getSession(false).getAttribute("userRole") == Role.ADMIN) {
+		return "admin";
+		} else {
+			return "redirect:403";
+		}
+	}
 
 	public boolean existUser(String email) {
 		return (userService.getUser(email) != null);
@@ -45,6 +54,7 @@ public class UserController {
 	@PostMapping("/add")
 	public String saveUser(@RequestParam("email") String email, @RequestParam("password") String password,
 			Model model) {
+
 		System.out.println(Role.values());
 		if (existUser(email)) {
 			System.out.println("utilisateur existant");
@@ -71,10 +81,11 @@ public class UserController {
 			String pw_hash = user.getPassword();
 			model.addAttribute("erreurNoUser", Boolean.FALSE);
 			if (BCrypt.checkpw(password, pw_hash)) {
-				System.out.println("mot de passe OK");
 				model.addAttribute("erreurMdp", Boolean.FALSE);
 				request.getSession().setAttribute("userConnecte", true);
 				request.getSession().setAttribute("idUser", email);
+				request.getSession().setAttribute("userRole", user.getRole());
+				System.out.println(user.getRole());
 				return "redirect:/";
 			} else {
 				System.out.println("Mauvais mdp");
@@ -89,52 +100,71 @@ public class UserController {
 	}
 
 	@GetMapping("/users")
-	public String getAllUsers(Model model) {
-		model.addAttribute("userList", userService.list());
-		return "listUsers";
+	public String getAllUsers(Model model, HttpServletRequest request) {
+		if (request.getSession(false).getAttribute("userRole") == Role.ADMIN) {
+			model.addAttribute("userList", userService.list());
+			return "listUsers";
+		} else {
+			return "redirect:403";
+		}
 	}
 
 	@GetMapping("/usersDelete/{email:.+}")
-	public String delete(@PathVariable("email") String email) {
-		userService.delete(email);
-		return "redirect:/users";
+	public String delete(@PathVariable("email") String email, HttpServletRequest request) {
+		if (request.getSession(false).getAttribute("userRole") == Role.ADMIN) {
+			userService.delete(email);
+			return "redirect:/users";
+		} else {
+			return "redirect:403";
+		}
 	}
 
 	@GetMapping("/userEdit/{email:.+}")
-	public String reachEditProduct(@PathVariable("email") String email, Model model) {
-		model.addAttribute("role", Role.values());
-		model.addAttribute("user", userService.getUser(email));
-		return ("editUser");
+	public String reachEditProduct(@PathVariable("email") String email, Model model, HttpServletRequest request) {
+		if (request.getSession(false).getAttribute("userRole") == Role.ADMIN) {
+			model.addAttribute("role", Role.values());
+			model.addAttribute("user", userService.getUser(email));
+			return ("editUser");
+		} else {
+			return "redirect:403";
+		}
 	}
 
 	@PostMapping("/userEdit/{email:.+}/edit")
 	public String editUser(@PathVariable("email") String email, @ModelAttribute("user") @Valid User user,
-			BindingResult result, RedirectAttributes attr, Model model) {
-		if (result.hasErrors()) {
-			return ("redirect:/userEdit/" + email);
-		} else {
-			try {
-				userService.update(user);
-				attr.addFlashAttribute("success", Boolean.TRUE);
-			} catch (Exception e) {
-				System.out.println(e);
-				attr.addFlashAttribute("error", Boolean.TRUE);
+			BindingResult result, RedirectAttributes attr, Model model, HttpServletRequest request) {
+		if (request.getSession(false).getAttribute("userRole") == Role.ADMIN) {
+			if (result.hasErrors()) {
+				return ("redirect:/userEdit/" + email);
+			} else {
+				try {
+					userService.update(user);
+					attr.addFlashAttribute("success", Boolean.TRUE);
+				} catch (Exception e) {
+					System.out.println(e);
+					attr.addFlashAttribute("error", Boolean.TRUE);
+				}
+				return ("redirect:/users");
 			}
-			return ("redirect:/users");
+		} else {
+			return "redirect:403";
 		}
 	}
 
 	@PostMapping("/addUser")
-	public String saveUser(@ModelAttribute("user") @Valid User user, BindingResult result, Model model) {
+	public String saveUser(@ModelAttribute("user") @Valid User user, BindingResult result, Model model, HttpServletRequest request) {
+		if (request.getSession(false).getAttribute("userRole") == Role.ADMIN) {
+			if (result.hasErrors()) {
+				System.out.println("Erreurs");
+				model.addAttribute("users", userService.list());
+				return "register";
+			}
 
-		if (result.hasErrors()) {
-			System.out.println("Erreurs");
-			model.addAttribute("users", userService.list());
-			return "register";
+			userService.save(user);
+			return "redirect:/listUsers";
+		} else {
+			return "redirect:403";
 		}
-
-		userService.save(user);
-		return "redirect:/listUsers";
 	}
 
 	@GetMapping("/logout")

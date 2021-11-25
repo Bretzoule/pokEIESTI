@@ -36,7 +36,8 @@
 
 	<section id="product-shop">
 		<div class="container">
-		<a href="products" class="text-primary d-block pb-5"><i class="bi bi-arrow-left"></i> Retourner à la page Produits</a>
+			<a href="products" class="text-primary d-block pb-5"><i
+				class="bi bi-arrow-left"></i> Retourner à la page Produits</a>
 			<div class="row details justify-content-center align-items-center">
 				<div class="col-md-4">
 					<img src="${ product.picture }" class="img-fluid">
@@ -48,17 +49,18 @@
 					<p class="description">${ product.description }</p>
 					<h2>
 						<span class="fw-bold text-primary">${ product.price }€</span>
-						<del>109.99€</del>
+						<del><fmt:formatNumber type="number" maxFractionDigits="2" value="${ product.price * 1.1 }"/>€</del>
 					</h2>
 					<form action="testPanier" method='post'>
 						<input type="number" class="d-none" value=${ product.id }
-							name="productid" /> <input type="number" class="d-none" value="1"
-							name="quantite" /> <input type="text" class="d-none" value="add"
-							name="action" /> 
-							<a href="javascript:{}" onclick="document.querySelector('form').submit();" type="button" class="btn btn-primary btn-lg d-block m-auto my-5"><i
-						class="bi bi-cart"></i> Ajouter au panier</a>
+							name="productid" /> <input type="number" class="d-none"
+							value="1" name="quantite" /> <input type="text" class="d-none"
+							value="add" name="action" /> <a href="javascript:{}"
+							onclick="document.querySelector('form').submit();" type="button"
+							class="btn btn-primary btn-lg d-block m-auto my-5"><i
+							class="bi bi-cart"></i> Ajouter au panier</a>
 					</form>
-					
+
 					<p class="hurry">
 						Vite ! Il reste seulement <span class="text-danger fw-bold">${ product.stock }
 							exemplaires</span> de cet article.

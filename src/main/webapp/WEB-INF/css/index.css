@@ -224,8 +224,11 @@ a{
 
 
 
-/* LOGIN */
-
+/* ERROR PAGES */
+.wrapper{
+	height: 80vh !important;
+	padding-top: 20vh;
+}
 
 
 
