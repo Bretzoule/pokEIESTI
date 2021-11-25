@@ -72,16 +72,17 @@
 			€
 		</h2>
 		<form action="confirmOrder" method="post">
-			<input type="number" class="d-none" value=${ sessionScope.idUser }
+			<input type="string" class="d-none" value=${ sessionScope.idUser }
 				name="idUser" /> <input type="number" class="d-none"
 				value=${ prixtotal } name="prixtotal" />
+
+			<div class="d-flex justify-content-center align-items-center pt-4">
+				<a class="me-3 btn btn-lg btn-outline-primary" href="products"><i
+					class="bi bi-arrow-left"></i> Continuer mes achats</a> <input
+					type="submit" class="text-white btn btn-primary btn-lg"
+					value="Confirmer la commande" />
+			</div>
 		</form>
-		<div class="d-flex justify-content-center align-items-center pt-4">
-			<a class="me-3 btn btn-lg btn-outline-primary" href="products"><i
-				class="bi bi-arrow-left"></i> Continuer mes achats</a> <a
-				class="text-white btn btn-primary btn-lg" type="button">Confirmer
-				la commande</a>
-		</div>
 	</div>
 </body>
 </html>
