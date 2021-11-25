@@ -34,6 +34,7 @@ public class UserController {
 	@GetMapping("/admin")
 	public String reachAdminPage(HttpServletRequest request) {
 		if (request.getSession(false).getAttribute("userRole") == Role.ADMIN) {
+			//on verifie qu'il est admin
 			return "admin";
 		} else {
 			return "redirect:403";
@@ -50,6 +51,7 @@ public class UserController {
 
 		System.out.println(Role.values());
 		if (existUser(email)) {
+			//si l'utilisateur existe deja
 			System.out.println("utilisateur existant");
 			model.addAttribute("erreurUser", Boolean.TRUE);
 		} else {
@@ -69,11 +71,13 @@ public class UserController {
 	public String loginUser(@RequestParam("email") String email, @RequestParam("password") String password,
 			HttpServletRequest request, Model model) {
 		if (existUser(email)) {
+			//on verifie que l'utilisateur existe
 			User user = new User();
 			user = userService.getUser(email);
 			String pw_hash = user.getPassword();
 			model.addAttribute("erreurNoUser", Boolean.FALSE);
 			if (BCrypt.checkpw(password, pw_hash)) {
+				//on verifie le mot de passe a sa version crypté
 				model.addAttribute("erreurMdp", Boolean.FALSE);
 				request.getSession().setAttribute("userConnecte", true);
 				request.getSession().setAttribute("idUser", email);
@@ -94,6 +98,7 @@ public class UserController {
 	@GetMapping("/users")
 	public String getAllUsers(Model model, HttpServletRequest request) {
 		if (request.getSession(false).getAttribute("userRole") == Role.ADMIN) {
+			//on peux regarder les users si on est admins
 			model.addAttribute("userList", userService.list());
 			return "listUsers";
 		} else {
@@ -151,7 +156,6 @@ public class UserController {
 				model.addAttribute("users", userService.list());
 				return "register";
 			}
-
 			userService.save(user);
 			return "redirect:/listUsers";
 		} else {
@@ -162,6 +166,7 @@ public class UserController {
 	@GetMapping("/logout")
 	public String logOut(HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
+		//on detruit la session
 		session.invalidate();
 		return "redirect:/";
 	}

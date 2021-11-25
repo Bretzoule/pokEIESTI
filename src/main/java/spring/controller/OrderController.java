@@ -44,6 +44,7 @@ public class OrderController {
 	
     @PostMapping("confirmOrder")
     public String confirmOrder(@RequestParam("idUser") String user_mail, @RequestParam("prixtotal") double prixtotal) {
+		//on crée l'objet order puis on ajoute les elements
         Order order = new Order();
         order.setUser(userservice.getUser(user_mail));
         order.setTotal_price(prixtotal);
@@ -52,18 +53,21 @@ public class OrderController {
         orderservice.save(order);
         
         return "redirect:validerCommande";
+		//on retourne validerCommande pour lancer la deuxième fonction
     }
     
     
     @SuppressWarnings("unchecked")
 	@GetMapping("/validerCommande")
 	public String confirmOrder(HttpServletRequest request, Model model) {
+		//cette fonction sert a soustraire la quantité commandé au stocks
 		Object tmpPanier = request.getSession().getAttribute("panier");
 		HashMap<Integer, Integer> panier;
 		if ((tmpPanier != null) && (tmpPanier instanceof HashMap<?, ?>)) {
 			panier = (HashMap<Integer, Integer>) tmpPanier;
 			List<CartElement> elementPanier = new ArrayList<>();
 			for (int key : panier.keySet()) {
+				//on parcours le panier
 				Product product = productService.getProduct(key);
 				int qtePanier = panier.get(key);
 				int qteStock = product.getStock();
@@ -76,6 +80,7 @@ public class OrderController {
 				}
 			}
 			panier.clear();
+			//on supprime la table de hachage
 			request.getSession().setAttribute("qteInsuffisante", "");
 			model.addAttribute("messageSuccess", "Merci de votre commande !");
 			return "panier";
