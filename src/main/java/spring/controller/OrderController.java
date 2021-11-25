@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import spring.model.CartElement;
 import spring.model.Order;
 import spring.model.Product;
-import spring.model.Type;
 import spring.service.OrderService;
 import spring.service.ProductService;
 import spring.service.UserService;
@@ -72,7 +71,7 @@ public class OrderController {
 					product.setStock(qteStock - qtePanier);
 					productService.update(product);
 				} else {
-					model.addAttribute("messageError", "L'un de vos articles n'est pas en quantité suffisante dans notre stock.");
+					model.addAttribute("messageError", "L'un de vos articles n'est pas en quantitï¿½ suffisante dans notre stock.");
 					return "panier";
 				}
 			}
