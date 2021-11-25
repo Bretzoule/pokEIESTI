@@ -34,15 +34,5 @@ public class OrderServiceImp implements OrderService{
 	public Order getOrder(long order_id) {
 		return orderDao.getOrder(order_id);
 	}
-
-	@Override
-	public void update(Order order) {
-		// TODO Auto-generated method stub	
-	}
 	
-	@Override
-	public void confirmOrder(long order_id) {
-		// TODO Auto-generated method stub	
-	}
-
 }
