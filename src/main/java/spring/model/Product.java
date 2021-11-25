@@ -35,7 +35,7 @@ public class Product {
 	private double price;
 
 	@Column(name = "stock")
-	@Min(value = 1, message = "Ce champ doit être supérieur à 0.")
+	@Min(value = 0, message = "Ce champ doit être supérieur ou �gal à 0.")
 	private int stock;
 
 	@Column(name = "picture")

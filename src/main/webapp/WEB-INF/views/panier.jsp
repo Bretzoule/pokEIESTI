@@ -30,6 +30,19 @@
 		<div class="row d-flex justify-content-md-center">
 			<h1 class='py-5'>Mon panier</h1>
 
+			<c:if test="${ sessionScope.qteInsuffisante != '' && sessionScope.qteInsuffisante != null}">
+				<div class="alert alert-danger">
+					<p><span class="fw-bold">Erreur !</span> ${ sessionScope.qteInsuffisante }</p>
+				</div>
+			</c:if>
+
+			<c:if test="${ messageSuccess != null}">
+				<div class="alert alert-success">
+					<p>
+						<span class="fw-bold">Parfait !</span> ${ messageSuccess }
+					</p>
+				</div>
+			</c:if>
 
 			<table class="table">
 				<thead>
@@ -42,36 +55,56 @@
 					</tr>
 				</thead>
 				<tbody>
-				<c:forEach var="entities" items="${elementPanier}">
-					<tr>
-						<td scope="row"><c:out value="${entities.product.name}" /></td>
-						<td><c:out value="${entities.quantity}" /></td>
-						<td><c:out value="${entities.product.price}" /></td>
-						<td><c:out
-								value="${entities.product.price*entities.quantity}" /></td>
-						<td>
-							<form action="testPanier" method='post'>
-								<input type="number" class="d-none" value=${ entities.product.id }
-									name="productid" /> <input type="number" class="d-none"
-									value="1" name="quantite" /> <input type="text" class="d-none"
-									value="delete" name="action" /> <a href="javascript:{}"
-									onclick="document.querySelector('form').submit();"
-									type="button" class='btn btn-danger'><i
-									class="bi bi-trash-fill"></i> Supprimer</a>
-							</form>
-						</td>
-					</tr>
-				</c:forEach>
+					<c:forEach var="entities" items="${elementPanier}">
+						<tr class="align-middle">
+							<td scope="row"><c:out value="${entities.product.name}" /></td>
+							<td><c:out value="${entities.quantity}" /></td>
+							<td><c:out value="${entities.product.price}" /></td>
+							<td><c:out
+									value="${entities.product.price*entities.quantity}" /></td>
+							<td>
+								<form action="testPanier" method='post'
+									id="form${ entities.product.id }">
+									<input type="number" class="d-none"
+										value=${ entities.product.id } name="productid" /> <input
+										type="number" class="d-none" value="1" name="quantite" /> <input
+										type="text" class="d-none" value="delete" name="action" /> <a
+										href="javascript:{}"
+										onclick="document.querySelector('#form${entities.product.id }').submit();"
+										type="button" class='btn btn-danger'><i
+										class="bi bi-trash-fill"></i> Supprimer</a>
+								</form>
+							</td>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>
-		<h2>Prix total de la commande : <fmt:formatNumber type="number" maxFractionDigits="2" value="${prixtotal}"/>€</h2>
-		<div class="d-flex justify-content-center align-items-center pt-4">
-			<a class="me-3 btn btn-lg btn-outline-primary" href="products"><i
-				class="bi bi-arrow-left"></i> Continuer mes achats</a> <a
-				class="text-white btn btn-primary btn-lg" type="button">Confirmer
-				la commande</a>
-		</div>
+		<h2>
+			Prix total de la commande :
+			<fmt:formatNumber type="number" maxFractionDigits="2"
+				value="${prixtotal}" />
+			€
+		</h2>
+		<form action="confirmOrder" method="post">
+			<input type="string" class="d-none" value=${ sessionScope.idUser }
+				name="idUser" /> <input type="number" class="d-none"
+				value=${ prixtotal } name="prixtotal" />
+
+
+			<div class="d-flex justify-content-center align-items-center pt-4">
+				<a class="me-3 btn btn-lg btn-outline-primary" href="products"><i
+					class="bi bi-arrow-left"></i> Continuer mes achats</a>
+				<c:if test="${ sessionScope.userConnecte && prixtotal != 0 && prixtotal != null }">
+					<input type="submit" class="text-white btn btn-primary btn-lg"
+						value="Confirmer la commande" />
+				</c:if>
+			</div>
+		</form>
 	</div>
+
+	<footer class="d-flex align-items-center bg-dark">
+		<jsp:include page="/WEB-INF/includes/footer.jsp" />
+	</footer>
 </body>
 </html>

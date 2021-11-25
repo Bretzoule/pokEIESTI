@@ -3,6 +3,8 @@ package spring.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+
+//on fait les chemins pour rediriger vers les bonnes pages
 @Controller
 public class MainController {
     @GetMapping("/")

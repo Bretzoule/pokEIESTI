@@ -73,7 +73,7 @@
 					</div>
 					<div class="px-2">
 						<input class="btn-lg btn-primary form-control text-white w-100"
-							value="Ajouter produit." type="submit" />
+							value="Ajouter produit" type="submit" />
 					</div>
 				</form:form>
 			</div>

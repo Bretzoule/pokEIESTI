@@ -1,6 +1,6 @@
 package spring.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,8 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Table;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "orders")
@@ -28,6 +30,7 @@ public class Order {
 	private double total_price;
 	
 	@Column(name="date")
+	@Temporal(value=TemporalType.DATE)
 	private Date date;
 	
 	public int getOrder_id() {

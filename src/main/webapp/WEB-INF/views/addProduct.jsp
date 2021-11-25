@@ -20,9 +20,9 @@
 			<div class="col-md-6">
 				<form:form action="addProduct/add" method="post"
 					modelAttribute="product" enctype='multipart/form-data'>
-					<img style="width: 200px; margin-right: 20px;" class="m-5"
-						id="logoTopDroit" src="assets/PokEISTIWithText.png" alt="logo">
-					<h1>Ajouter un produit</h1>
+						<a href="/pokeisti"> <img style="width: 200px; margin-right: 20px;" class="m-5" id="logoTopDroit" src="assets/PokEISTIWithText.png" alt="logo">
+						</a>
+					<h1 class="py-4">Ajouter un produit</h1>
 
 					<div class="form-floating m-2">
 						<form:input type="text" class="form-control" id="floatingInput"
@@ -59,11 +59,15 @@
 					
 					<div class="px-2">
 						<input class="btn-lg btn-primary form-control text-white w-100"
-							value="Ajouter produit." type="submit" />
+							value="+ Ajouter produit" type="submit" />
 					</div>
 				</form:form>
 			</div>
 		</div>
 	</div>
+	
+	<footer class="d-flex align-items-center bg-dark mt-5">
+		<jsp:include page="/WEB-INF/includes/footer.jsp" />
+	</footer>
 </body>
 </html>

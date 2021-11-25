@@ -1,5 +1,4 @@
 USE pokeisti;
-SET NAMES utf8;
 -- --------------------------------------------------------
 -- Déchargement des données de la table `produits`
 --
@@ -112,8 +111,17 @@ VALUES (
 --
 
 INSERT INTO `users`(`email`,`password`,`role`) VALUES
-	('merdegarbure@cy-tech.fr','$2a$12$civK98HE.bxLrNK2aNjP0uY8uKzG9jZxLZPk0gO1b0zim0rv854IW','ADMIN'),
-	('alexmerde@cy-tech.fr','$2a$12$civK98HE.bxLrNK2aNjP0uY8uKzG9jZxLZPk0gO1b0zim0rv854IW','USER'),
-	('lagamerde@cy-tech.fr','$2a$12$civK98HE.bxLrNK2aNjP0uY8uKzG9jZxLZPk0gO1b0zim0rv854IW','LISTENER'),
-	('merdexandre@cy-tech.fr','$2a$12$civK98HE.bxLrNK2aNjP0uY8uKzG9jZxLZPk0gO1b0zim0rv854IW','ADMIN'),
-	('alemerdexandre@cy-tech.fr','$2a$12$civK98HE.bxLrNK2aNjP0uY8uKzG9jZxLZPk0gO1b0zim0rv854IW','USER');
+	('admin','$2a$10$Ic6zvtxote9sHRHlkBTy8uLipV0FiE1ekAFZWJ2jmAkPOgsCYqiCO','ADMIN'),
+	('noa@cy-tech.fr','$2a$12$NfQReUqJEsCJUMoSIkdq2OS4PMEQRUqWR0djhEYEIVZRhU6FR9ty2','USER'),
+	('dorian@cy-tech.fr','$2a$12$Y0UvaK3S0SLo1NDvjUUmwONWFEo7bGeAaJITX0IJBKxEjL36k9pTC','LISTENER'),
+	('thomas@cy-tech.fr','$2a$12$Y.FszKMC2GfT3y1ZhDy1KerJx0BP2eYCNo41VCPKS9P9ezel1CTu2','ADMIN'),
+	('alexandre@cy-tech.fr','$2a$12$r7th24njifhehgdkCNpxqeMVzYWXcKFTZ1lEbEfLSaISRAMiSVK5C ','USER');
+	
+-- --------------------------------------------------------
+-- Versions non cryptés des mots de passes
+-- admin admin
+-- noa mdp
+-- dorian dorian
+-- thomas 0123
+-- alexandre skate2
+--
