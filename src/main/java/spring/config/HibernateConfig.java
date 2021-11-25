@@ -53,13 +53,8 @@ public class HibernateConfig {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 		dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/pokeisti");
-<<<<<<< HEAD
 		dataSource.setUsername("dodo");
 		dataSource.setPassword("enviedemourir");
-=======
-		dataSource.setUsername("leflochtho");
-		dataSource.setPassword("");
->>>>>>> branch 'main' of https://gitlab.etude.eisti.fr/mailhedori/pokeisti.git
 		return dataSource;
 	}
 
