@@ -22,6 +22,7 @@ public class CartController {
 	@Autowired
 	private ProductService productService;
 
+	@SuppressWarnings("unchecked")
 	@PostMapping("/testPanier")
 	public String testMestod(@RequestParam("action") String action, @RequestParam("productid") int productid,
 			@RequestParam("quantite") int quantite, HttpServletRequest request) {
@@ -57,6 +58,7 @@ public class CartController {
 		return "redirect:/panier";
 	}
 
+	@SuppressWarnings("unchecked")
 	@GetMapping("/panier")
 	public String goToCart(HttpServletRequest request, Model model) {
 		Object tmpPanier = request.getSession().getAttribute("panier");

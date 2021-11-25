@@ -21,7 +21,7 @@ import spring.model.Order;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScans(value = { @ComponentScan("com.howtodoinjava.demo.spring") })
+@ComponentScans(value = { @ComponentScan("spring") })
 public class HibernateConfig {
 
 	@Autowired
@@ -53,8 +53,8 @@ public class HibernateConfig {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 		dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/pokeisti");
-		dataSource.setUsername("root");
-		dataSource.setPassword("root");
+		dataSource.setUsername("leflochtho");
+		dataSource.setPassword("");
 		return dataSource;
 	}
 

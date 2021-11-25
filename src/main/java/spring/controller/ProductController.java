@@ -4,7 +4,6 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -77,7 +76,7 @@ public class ProductController {
 					BufferedOutputStream bout = new BufferedOutputStream(new FileOutputStream(path + "/" + filename));
 					bout.write(barr);
 					bout.flush();
-
+					bout.close();
 					theProduct.setPicture(UPLOAD_DIRECTORY + '/' + filename);
 					productService.save(theProduct);
 					attr.addFlashAttribute("success", Boolean.TRUE);
@@ -138,11 +137,13 @@ public class ProductController {
 						String filename = file.getOriginalFilename();
 						String pathB = request.getServletContext().getRealPath("WEB-INF/");
 						File fileToDelete = new File(pathB + product.getPicture());
+						fileToDelete.delete();
 						byte barr[] = file.getBytes();
 						BufferedOutputStream bout = new BufferedOutputStream(
 								new FileOutputStream(path + "/" + filename));
 						bout.write(barr);
 						bout.flush();
+						bout.close();
 						product.setPicture(UPLOAD_DIRECTORY + '/' + filename);
 					}
 					productService.update(product);
