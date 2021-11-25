@@ -1,5 +1,4 @@
 USE pokeisti;
-SET NAMES utf8;
 -- --------------------------------------------------------
 -- Déchargement des données de la table `produits`
 --
