@@ -34,7 +34,7 @@ public class UserController {
 	@GetMapping("/admin")
 	public String reachAdminPage(HttpServletRequest request) {
 		if (request.getSession(false).getAttribute("userRole") == Role.ADMIN) {
-		return "admin";
+			return "admin";
 		} else {
 			return "redirect:403";
 		}

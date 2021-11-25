@@ -94,7 +94,7 @@
 			<div class="d-flex justify-content-center align-items-center pt-4">
 				<a class="me-3 btn btn-lg btn-outline-primary" href="products"><i
 					class="bi bi-arrow-left"></i> Continuer mes achats</a>
-				<c:if test="${ prixtotal != 0 && prixtotal != null}">
+				<c:if test="${ sessionScope.userConnecte && prixtotal != 0 && prixtotal != null }">
 					<input type="submit" class="text-white btn btn-primary btn-lg"
 						value="Confirmer la commande" />
 				</c:if>

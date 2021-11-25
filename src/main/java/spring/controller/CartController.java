@@ -44,7 +44,7 @@ public class CartController {
 						panier.put(productid, quantiteI + quantite);
 						request.getSession().setAttribute("qteInsuffisante", "");
 					} else {
-						request.getSession().setAttribute("qteInsuffisante", "La quantité est insuffisante");
+						request.getSession().setAttribute("qteInsuffisante", "La quantitï¿½ est insuffisante");
 					}
 				} else {
 					panier.put(productid, quantite);
