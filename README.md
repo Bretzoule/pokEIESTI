@@ -14,6 +14,11 @@ Clonez cette repo,
 Ouvrez le projet dans Eclipse. 
 
 Configurer la base de données dans "HibernateConfig.java".
+
+Importer le fichier ressources/data.sql via mySQL afin de seeder la DB.
+
+
+
 Puis, 
 clic droit sur le projet,
 "Maven Install",
@@ -27,7 +32,7 @@ admin : admin
 
 noa@cy-tech.fr : mdp
 # pour se connecter en tant qu'utilisateur.
-``` 
+```
 
 ## Fonctionnalités
 
@@ -39,6 +44,9 @@ noa@cy-tech.fr : mdp
 ## Contributeurs 
 
 Alexandre LAGARRUE <lagarrueal@eisti.eu>
+
 Dorian MAILHE <mailhedori@eisti.eu>
+
 Thomas LEFLOCH <leflochtho@eisti.eu>
+
 Noa MOURAREAU <mourareaun@eisti.eu>

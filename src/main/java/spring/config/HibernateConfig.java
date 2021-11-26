@@ -31,11 +31,14 @@ public class HibernateConfig {
 	public LocalSessionFactoryBean getSessionFactory() {
 		LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
 		factoryBean.setDataSource(getDataSource());
-		//factoryBean.setConfigLocation(context.getResource("classpath:hibernate.cfg.xml"));
+		// factoryBean.setConfigLocation(context.getResource("classpath:hibernate.cfg.xml"));
 		Properties properties = new Properties();
 		properties.put("hibernate.hbm2ddl.auto", "update");
 		properties.put("hibernate.show_sql", "true");
 		properties.put("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
+		properties.put("hibernate.connection.CharSet", "utf-8");
+		properties.put("hibernate.connection.useUnicode", "true");
+		properties.put("hibernate.connection.characterEncoding", "utf-8");
 		factoryBean.setHibernateProperties(properties);
 		factoryBean.setAnnotatedClasses(User.class, Product.class, Order.class);
 		return factoryBean;
@@ -53,8 +56,8 @@ public class HibernateConfig {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 		dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/pokeisti");
-		dataSource.setUsername("dodo");
-		dataSource.setPassword("enviedemourir");
+		dataSource.setUsername("");
+		dataSource.setPassword("");
 		return dataSource;
 	}
 
