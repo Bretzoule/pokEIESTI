@@ -62,7 +62,7 @@ public class OrderController {
     @SuppressWarnings("unchecked")
 	@GetMapping("/validerCommande")
 	public String confirmOrder(HttpServletRequest request, Model model) {
-		//cette fonction sert a soustraire la quantité commandée au stocks
+		//cette fonction sert a soustraire la quantitï¿½ commandï¿½e au stocks
 		Object tmpPanier = request.getSession().getAttribute("panier");
 		HashMap<Integer, Integer> panier;
 		if ((tmpPanier != null) && (tmpPanier instanceof HashMap<?, ?>)) {
@@ -97,6 +97,7 @@ public class OrderController {
 	public String listOrdersAdmin(Model model, HttpServletRequest request) {
 		if (request.getSession(false).getAttribute("userRole") == Role.ADMIN) {
 			model.addAttribute("orderList", orderService.list());
+			System.out.println(orderService.list());
 			return ("listOrders");
 		} else {
 			return "redirect:403";

@@ -5,7 +5,9 @@
     color:#0d6efd !important;
 }
 
-
+.w-fit-content{
+	width: fit-content !important;
+}
 
 
 /* GENERAL */

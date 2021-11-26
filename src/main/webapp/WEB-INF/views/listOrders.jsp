@@ -52,12 +52,12 @@
 							</thead>
 							<tbody>
 								<c:forEach var="order" items="${orderList}">
-									<tr>
-										<td class="text-nowrap align-middle">${order.order_id}</td>
-										<td class="text-nowrap align-middle">${order.date}</td>
-										<td class="text-nowrap align-middle">${order.total_price}</td>
-										<td class="text-nowrap align-middle">${order.user.email}</td>
-										<td><a class="btn btn-danger"
+									<tr class="align-middle">
+										<td class="text-nowrap">${order.order_id}</td>
+										<td class="text-nowrap">${order.date}</td>
+										<td class="text-nowrap">${order.total_price}</td>
+										<td class="text-nowrap">${order.user.email}</td>
+										<td><a class="btn btn-danger d-block mx-auto w-fit-content"
 											href="removeOrder/${order.order_id}"><i
 												class="bi bi-trash-fill"></i> Supprimer</a></td>
 									</tr>

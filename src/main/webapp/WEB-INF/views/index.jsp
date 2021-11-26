@@ -155,7 +155,7 @@
 				</h1>
 				<hr class="w-25 d-block mx-auto my-5">
 				<div class="row justify-content-evenly pt-5">
-					<div class="col-md-3 review-card text-center py-3">
+					<div class="col-lg-3 review-card text-center py-3 my-lg-0 my-4">
 						<img src="./assets/lagamerde.jpg" class="rounded-circle my-3" />
 						<h3>Alexandre Lagarbue</h3>
 						<hr class="w-50 d-block mx-auto my-3" />
@@ -167,7 +167,7 @@
 								class="bi bi-star-fill"></i>
 						</p>
 					</div>
-					<div class="col-md-3 review-card text-center py-3">
+					<div class="col-lg-3 review-card text-center py-3 my-lg-0 my-4">
 						<img src="./assets/aurelien.jpg" class="rounded-circle my-3" />
 						<h3>Aurélien Monteillet</h3>
 						<hr class="w-50 d-block mx-auto my-3" />
@@ -180,7 +180,7 @@
 								class="bi bi-star-fill"></i>
 						</p>
 					</div>
-					<div class="col-md-3 review-card text-center py-3">
+					<div class="col-lg-3 review-card text-center py-3 my-lg-0 my-4">
 						<img src="./assets/couillet.jpg" class="rounded-circle my-3" />
 						<h3>Hugo Coeuillet</h3>
 						<hr class="w-50 d-block mx-auto my-3" />

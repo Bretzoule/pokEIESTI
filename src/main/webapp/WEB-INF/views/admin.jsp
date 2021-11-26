@@ -32,7 +32,7 @@
 			<h1 class="text-center py-5">Panel admin</h1>
 			<div class="wrapper">
 				<div class="row justify-content-evenly text-center">
-					<div class="col-md-5">
+					<div class="col-md-3">
 						<h3 class="py-3">Gestion des produits</h3>
 						<p class="text-secondary fst-italic">Liste des produits avec possibilité d'ajouter, modifier, ou supprimer des items, gérer le stock, changer les images, et bien plus encore</p>
 						<a href="listProducts" class="btn btn-primary mt-2"><i class="bi bi-bag"></i>
@@ -41,11 +41,19 @@
 					<div class="col-md-1">
 						<div class="vr" style="height: 100%;"></div>
 					</div>
-					<div class="col-md-5">
+					<div class="col-md-3">
 						<h3 class="py-3">Gestion des utilisateurs</h3>
 						<p class="text-secondary fst-italic">Liste des utilisateurs avec possibilité de modifier les rôles des utilisateurs existants, ou d'en supprimer au besoin</p>
 						<a href="users" class="btn btn-primary mt-2"><i class="bi bi-person"></i>
 							Aller aux utilisateurs</a>
+					</div>
+					<div class="col-md-1">
+						<div class="vr" style="height: 100%;"></div>
+					</div>
+					<div class="col-md-3">
+						<h3 class="py-3">Gestion des commandes</h3>
+						<p class="text-secondary fst-italic">Liste des commandes avec possibilité de modifier les rôles des utilisateurs existants, ou d'en supprimer au besoin</p>
+						<a href="listOrders" class="btn btn-primary mt-2"><i class="bi bi-basket3"></i> Aller aux commandes</a>
 					</div>
 				</div>
 			</div>
