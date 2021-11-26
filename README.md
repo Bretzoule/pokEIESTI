@@ -19,8 +19,26 @@ clic droit sur le projet,
 "Maven Install",
 "Run on server"
 
-### Se connecter
+## Se connecter
 
 ```
-admin admin #pour se connecter en tant qu'administrateur.
+admin : admin 
+# pour se connecter en tant qu'administrateur.
 
+noa@cy-tech.fr : mdp
+# pour se connecter en tant qu'utilisateur.
+``` 
+
+## Fonctionnalités
+
+- Connexion
+- Inscription
+- Commande
+- Edition des produits/utilisateurs/commandes (en tant qu'admin)
+
+## Contributeurs 
+
+Alexandre LAGARRUE <lagarrueal@eisti.eu>
+Dorian MAILHE <mailhedori@eisti.eu>
+Thomas LEFLOCH <leflochtho@eisti.eu>
+Noa MOURAREAU <mourareaun@eisti.eu>
