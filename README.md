@@ -12,6 +12,15 @@ Clonez cette repo,
 ### Via Eclipse :
 
 Ouvrez le projet dans Eclipse. 
-Clic droit sur le projet, 
 
-### Via Tomcat :
+Configurer la base de données dans "HibernateConfig.java".
+Puis, 
+clic droit sur le projet,
+"Maven Install",
+"Run on server"
+
+### Se connecter
+
+```
+admin admin #pour se connecter en tant qu'administrateur.
+
