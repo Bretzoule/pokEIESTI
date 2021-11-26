@@ -23,7 +23,7 @@ public class CartController {
 	private ProductService productService;
 
 	@SuppressWarnings("unchecked")
-	@PostMapping("/testPanier")
+	@PostMapping("/addPanier")
 	public String testMestod(@RequestParam("action") String action, @RequestParam("productid") int productid,
 			@RequestParam("quantite") int quantite, HttpServletRequest request, Model model) {
 		Object tmpPanier = request.getSession().getAttribute("panier");
@@ -47,7 +47,7 @@ public class CartController {
 						panier.put(productid, quantiteI + quantite);
 						request.getSession().setAttribute("qteInsuffisante", "");
 					} else {
-						request.getSession().setAttribute("qteInsuffisante", "La quantit� est insuffisante");
+						request.getSession().setAttribute("qteInsuffisante", "La quantit� est insuffisante");
 					}
 				} else {
 					//la table ne contient pas la clé on crée l'association clé, objet

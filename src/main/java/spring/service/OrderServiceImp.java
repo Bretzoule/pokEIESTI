@@ -21,18 +21,17 @@ public class OrderServiceImp implements OrderService{
 	}
 
 	@Transactional
-	public void delete(long order_id) {
+	public void delete(int order_id) {
 		orderDao.delete(order_id);
 	}
 
 	@Transactional(readOnly = true)
-	public List<Order> getAllOrders() {
-		return orderDao.getAllOrders();
+	public List<Order> list() {
+		return orderDao.list();
 	}
 	
 	@Transactional(readOnly = true)
-	public Order getOrder(long order_id) {
+	public Order getOrder(int order_id) {
 		return orderDao.getOrder(order_id);
 	}
-	
 }

@@ -63,7 +63,7 @@
 							<td><c:out
 									value="${entities.product.price*entities.quantity}" /></td>
 							<td>
-								<form action="testPanier" method='post'
+								<form action='addPanier' method='post'
 									id="form${ entities.product.id }">
 									<input type="number" class="d-none"
 										value=${ entities.product.id } name="productid" /> <input

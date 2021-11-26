@@ -57,25 +57,29 @@
 					href="register">Inscrivez vous ici</a>
 
 			</div>
-			<c:if test="${erreurUser}">
-				<div
-					class="alert alert-warning float alert-dismissible position-absolute myAlert">
-					<strong>Erreur !</strong> L'email est deja prise <a href="#"
-						class="closebtn" data-dismiss="alert">ï¿½</a>
+			<c:if test="${erreurUser}">>
+				<div class="alert alert-warning float alert-dismissible position-absolute myAlert"
+					role="alert">
+					<strong>Erreur !</strong> L'email est deja prise 
+					<button type="button" class="btn-close" data-dismiss="alert"
+						aria-label="Close"></button>
 				</div>
 			</c:if>
 			<c:if test="${erreurMdp}">
-				<div
-					class="alert alert-warning float alert-dismissible position-absolute myAlert">
-					<strong>Erreur !</strong> Le mot de passe est incorrect <a href="#"
-						class="closebtn" data-dismiss="alert">ï¿½</a>
+				<div class="alert alert-warning float alert-dismissible position-absolute myAlert"
+					role="alert">
+					<strong>Erreur !</strong> Le mot de passe est incorrect
+					<button type="button" class="btn-close" data-dismiss="alert"
+						aria-label="Close"></button>
 				</div>
 			</c:if>
 			<c:if test="${erreurNoUser}">
-				<div
-					class="alert alert-warning float alert-dismissible position-absolute myAlert">
-					<strong>Erreur !</strong> Aucun utilisteur enregistrï¿½ avec cet
-					email <a href="#" class="closebtn" data-dismiss="alert">ï¿½</a>
+				<div class="alert alert-warning float alert-dismissible position-absolute myAlert"
+					role="alert">
+					<strong>Erreur !</strong> Aucun utilisteur enregistré avec cet
+					email 
+					<button type="button" class="btn-close" data-dismiss="alert"
+						aria-label="Close"></button>
 				</div>
 			</c:if>
 			<!-- </main> -->

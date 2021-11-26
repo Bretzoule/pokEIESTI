@@ -23,7 +23,7 @@ public class OrderDaoImp implements OrderDao{
 	}
 
 	@Override
-	public Order getOrder(long order_id) {
+	public Order getOrder(int order_id) {
 		return ((Order) sessionFactory.getCurrentSession().createQuery("from Order where order_id = :id")
 				.setParameter("id", order_id).uniqueResult());
 	}
@@ -34,14 +34,14 @@ public class OrderDaoImp implements OrderDao{
 	}
 
 	@Override
-	public void delete(long order_id) {
+	public void delete(int order_id) {
 		Session session = sessionFactory.getCurrentSession();
 		Order orderToDelete = session.get(Order.class, order_id);
 		session.delete(orderToDelete);
 	}
 
 	@Override
-	public List<Order> getAllOrders() {
+	public List<Order> list() {
 		@SuppressWarnings("unchecked")
 		TypedQuery<Order> query = sessionFactory.getCurrentSession().createQuery("from Order");
 		return query.getResultList();

@@ -34,41 +34,41 @@
 		<jsp:include page="/WEB-INF/includes/navbar.jsp" />
 	</header>
 
-	<section id="product-shop">
+	<div id="productList">
 		<div class="container">
-			<a href="products" class="text-primary d-block pb-5"><i
-				class="bi bi-arrow-left"></i> Retourner à la page Produits</a>
-			<div class="row details justify-content-center align-items-center">
-				<div class="col-md-4">
-					<img src="${ product.picture }" class="img-fluid">
-				</div>
-				<div class="col-md-6">
-					<h1 class="fw-bold mb-3">${ product.name }</h1>
-					<h3 class="fw-light fst-italic text-secondary">${ product.type }</h3>
-					<hr>
-					<p class="description">${ product.description }</p>
-					<h2>
-						<span class="fw-bold text-primary">${ product.price }€</span>
-						<del><fmt:formatNumber type="number" maxFractionDigits="2" value="${ product.price * 1.1 }"/>€</del>
-					</h2>
-					<form action="addPanier" method='post'>
-						<input type="number" class="d-none" value=${ product.id }
-							name="productid" /> <input type="number" class="d-none"
-							value="1" name="quantite" /> <input type="text" class="d-none"
-							value="add" name="action" /> <a href="javascript:{}"
-							onclick="document.querySelector('form').submit();" type="button"
-							class="btn btn-primary btn-lg d-block m-auto my-5"><i
-							class="bi bi-cart"></i> Ajouter au panier</a>
-					</form>
-
-					<p class="hurry">
-						Vite ! Il reste seulement <span class="text-danger fw-bold">${ product.stock }
-							exemplaires</span> de cet article.
-					</p>
+			<div class="row">
+				<div class="col mb-3">
+					<h1 class="text-center py-5">Liste des commandes</h1>
+					<div class="table-responsive table-lg mt-3">
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Date</th>
+									<th>Prix total</th>
+									<th>Utilisateur</th>
+									<th class="text-center">Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach var="order" items="${orderList}">
+									<tr>
+										<td class="text-nowrap align-middle">${order.order_id}</td>
+										<td class="text-nowrap align-middle">${order.date}</td>
+										<td class="text-nowrap align-middle">${order.total_price}</td>
+										<td class="text-nowrap align-middle">${order.user.email}</td>
+										<td><a class="btn btn-danger"
+											href="removeOrder/${order.order_id}"><i
+												class="bi bi-trash-fill"></i> Supprimer</a></td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>
-	</section>
+	</div>
 
 
 	<footer class="d-flex align-items-center bg-dark">

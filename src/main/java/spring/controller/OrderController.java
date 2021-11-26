@@ -11,12 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import spring.model.CartElement;
 import spring.model.Order;
 import spring.model.Product;
+import spring.model.Role;
 import spring.service.OrderService;
 import spring.service.ProductService;
 import spring.service.UserService;
@@ -24,10 +26,10 @@ import spring.service.UserService;
 @Controller
 public class OrderController {
 	@Autowired
-	private OrderService orderservice;
+	private OrderService orderService;
 	
 	@Autowired
-	private UserService userservice;
+	private UserService userService;
 	
 	@Autowired
 	private ProductService productService;
@@ -46,11 +48,11 @@ public class OrderController {
     public String confirmOrder(@RequestParam("idUser") String user_mail, @RequestParam("prixtotal") double prixtotal) {
 		//on crée l'objet order puis on ajoute les elements
         Order order = new Order();
-        order.setUser(userservice.getUser(user_mail));
+        order.setUser(userService.getUser(user_mail));
         order.setTotal_price(prixtotal);
         Date now = new Date();        
         order.setDate( now );
-        orderservice.save(order);
+        orderService.save(order);
         
         return "redirect:validerCommande";
 		//on retourne validerCommande pour lancer la deuxième fonction
@@ -60,7 +62,7 @@ public class OrderController {
     @SuppressWarnings("unchecked")
 	@GetMapping("/validerCommande")
 	public String confirmOrder(HttpServletRequest request, Model model) {
-		//cette fonction sert a soustraire la quantité commandé au stocks
+		//cette fonction sert a soustraire la quantit� command�e au stocks
 		Object tmpPanier = request.getSession().getAttribute("panier");
 		HashMap<Integer, Integer> panier;
 		if ((tmpPanier != null) && (tmpPanier instanceof HashMap<?, ?>)) {
@@ -90,5 +92,26 @@ public class OrderController {
 		}
 		
 	}
+    
+	@GetMapping("/listOrders")
+	public String listOrdersAdmin(Model model, HttpServletRequest request) {
+		if (request.getSession(false).getAttribute("userRole") == Role.ADMIN) {
+			model.addAttribute("orderList", orderService.list());
+			return ("listOrders");
+		} else {
+			return "redirect:403";
+		}
+	}
+
+	@GetMapping("/removeOrder/{id}")
+	public String removeProduct(@PathVariable("id") int id, Model model, HttpServletRequest request) {
+		if (request.getSession(false).getAttribute("userRole") == Role.ADMIN) {
+			orderService.delete(id);
+			return ("redirect:/listOrders");
+		} else {
+			return "redirect:403";
+		}
+	}
+
 
 }
